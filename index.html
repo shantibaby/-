@@ -755,9 +755,15 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 }
 @media(max-width:560px){
   /* モバイル：背景画像を上下いっぱいに見せ、ガラスは可能な限り最下部へ */
+  /* ヘッダー：小画面ではローマ字サブを消してピルを画面内に収める */
+  header{width:calc(100% - 24px)}
+  .nav-pill{padding:8px 14px}
+  .logo .sub{display:none}
+  .logo-mark{height:30px}
+  .logo .mark{font-size:1.05rem}
   .hero{align-items:flex-end;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
   .hero-card{
-    width:100%;padding:24px 20px 26px;border-radius:18px;
+    width:100%;padding:18px 18px 20px;border-radius:18px;
     background:rgba(255,255,255,.14)!important;
     border:1px solid rgba(255,255,255,.38)!important;
     -webkit-backdrop-filter:blur(14px) saturate(1.3)!important;backdrop-filter:blur(14px) saturate(1.3)!important;
@@ -772,9 +778,10 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   /* アイブロウ（Miyazaki Roofing Since 2000 のラベル）はモバイルでは非表示 */
   .hero-eyebrow{display:none!important}
   /* 日本語を自然な区切りで折り返す＋字間を詰めて改行を整える */
-  .hero h1{font-size:1.7rem;line-height:1.5;letter-spacing:-.02em;word-break:auto-phrase;line-break:strict;margin-bottom:16px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
-  .hero .lead{font-size:.92rem;line-height:1.78;margin-bottom:22px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.9)}
-  .hero-ctas{gap:12px}
+  .hero h1{font-size:1.42rem;line-height:1.5;letter-spacing:-.02em;word-break:auto-phrase;line-break:strict;margin-bottom:12px;text-shadow:0 2px 16px rgba(0,0,0,.85)}
+  .hero .lead{font-size:.86rem;line-height:1.7;margin-bottom:16px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.9)}
+  .hero-ctas{gap:10px}
+  .hero-ctas .btn{white-space:nowrap}
   /* 各セクションの見出し(sec-title)をモバイルで少し大きく＝ヒーロー見出しと同じくらいに揃える */
   .sec-title{font-size:1.7rem;line-height:1.45;letter-spacing:-.01em;word-break:auto-phrase}
 }
@@ -975,7 +982,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     <p class="lead" data-en="Founded in Miyazaki 26 years ago, with 2,000+ projects completed. A 35-year master craftsman's skill and a 10-year warranty protect your family's roof.">宮崎市で創業26年・施工2,000件以上。職人歴35年の確かな技術と10年保証で、あなたの家の屋根を守ります。</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary-wrap">
-        <span class="btn btn-primary" data-en="Get a Free Roof Inspection<span class='hero-arrow'>›</span>">無料で屋根を診断する<span class="hero-arrow">›</span></span>
+        <span class="btn btn-primary" data-en="Get a Roof Inspection<span class='hero-arrow'>›</span>">屋根を診断する<span class="hero-arrow">›</span></span>
       </a>
       <a href="tel:090-000-0000" class="btn btn-ghost" data-en="Call Us">電話で相談する</a>
     </div>
