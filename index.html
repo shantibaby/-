@@ -757,11 +757,15 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   /* モバイル：背景画像を上下いっぱいに見せ、ガラスは可能な限り最下部へ */
   /* ヘッダー：小画面ではローマ字サブを消してピルを画面内に収める */
   header{width:calc(100% - 24px)}
-  .nav-pill{padding:8px 14px}
+  .nav-pill{padding:8px 12px}
+  .logo{gap:8px}
   .logo .sub{display:none}
-  .logo-mark{height:30px}
-  .logo .mark{font-size:1.05rem}
-  .hero{align-items:flex-end;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+  .logo-mark{height:28px}
+  .logo .mark{font-size:.98rem;white-space:nowrap}
+  .lang-toggle{padding:6px 11px;font-size:.72rem}
+  /* カードは下部バーの上に・電話ボタンは下部バーと重複するため非表示 */
+  .hero{align-items:flex-end;padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  .hero-ctas .btn-ghost{display:none}
   .hero-card{
     width:100%;padding:18px 18px 20px;border-radius:18px;
     background:rgba(255,255,255,.14)!important;
@@ -1648,6 +1652,10 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       }
     };
     heroVideo.addEventListener('ended',swapToScrollVideo);
+    // スクロールを始めたら待たずに背景動画へ切替（scroll2のスタートを早める）
+    window.addEventListener('scroll',function onEarlySwap(){
+      if(window.scrollY>80){swapToScrollVideo();window.removeEventListener('scroll',onEarlySwap);}
+    },{passive:true});
   }
 
   /* ---- サウンドボタン ---- */
@@ -1794,7 +1802,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       ScrollTrigger.create({
         trigger:document.body,start:'top top',endTrigger:'footer',end:'bottom bottom',scrub:true,
         onUpdate:function(self){
-          if(scrollVideo.duration){scrollVideo.currentTime=scrollVideo.duration*self.progress;}
+          if(scrollVideo.duration){scrollVideo.currentTime=scrollVideo.duration*Math.pow(self.progress,0.85);}
         }
       });
     }
