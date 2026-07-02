@@ -619,7 +619,8 @@ body::before{display:none!important}
 }
 .cta-copy .urgent{display:inline-flex;align-items:center;gap:8px;background:rgba(227,160,8,.16);border:1px solid rgba(227,160,8,.5);color:#ffd97a;font-size:.8rem;font-weight:700;padding:8px 16px;border-radius:30px;margin-bottom:22px;
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.urgent-br{display:none}
+.urgent-br,.sp-br{display:none}
+@media(max-width:560px){.sp-br{display:inline}}
 @media(max-width:560px){
   .cta-copy .urgent{display:inline-block;text-align:center;line-height:1.7}
   .urgent-br{display:inline}
@@ -1031,7 +1032,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="sec-kicker">Our Track Record</span>
-      <h2 class="sec-title" data-en="The numbers tell the story of <span class='sora'>proven trust</span>">数字が語る、<span class="sora">確かな信頼</span></h2>
+      <h2 class="sec-title" data-en="The numbers tell the story of<br class='sp-br'> <span class='sora'>proven trust</span>">数字が語る、<br class="sp-br"><span class="sora">確かな信頼</span></h2>
       <p class="sec-lead" data-en="Since our founding in Miyazaki in 2000, we have stayed close to our local customers.<br>Every craftsman protects your family's roof with honesty and care.">宮崎市で2000年の創業以来、地元のお客様に寄り添い続けてきた実績です。<br>職人一人ひとりが誠実に、丁寧に、あなたの大切な家の屋根を守ります。</p>
     </div>
     <div class="stats-grid">
