@@ -1668,7 +1668,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     heroVideo.addEventListener('ended',swapToScrollVideo);
     // スクロールを始めたら待たずに背景動画へ切替（scroll2のスタートを早める）
     window.addEventListener('scroll',function onEarlySwap(){
-      if(window.scrollY>80){swapToScrollVideo();window.removeEventListener('scroll',onEarlySwap);}
+      if(window.scrollY>15){swapToScrollVideo();window.removeEventListener('scroll',onEarlySwap);}
     },{passive:true});
   }
 
@@ -1816,7 +1816,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       ScrollTrigger.create({
         trigger:document.body,start:'top top',endTrigger:'footer',end:'bottom bottom',scrub:true,
         onUpdate:function(self){
-          if(scrollVideo.duration){scrollVideo.currentTime=scrollVideo.duration*Math.pow(self.progress,0.85);}
+          if(scrollVideo.duration){scrollVideo.currentTime=scrollVideo.duration*Math.pow(self.progress,0.72);}
         }
       });
     }
