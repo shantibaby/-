@@ -1,0 +1,22 @@
+# === 内部資料・バックアップ（公開しない） ===
+backups/
+01_マーケティング戦略書.md
+02_差し替えガイド.md
+03_進捗まとめ_引き継ぎ.md
+PROGRESS.md
+引き継ぎ*.md
+サーバー起動.command
+server.py
+
+# === システムファイル ===
+.DS_Store
+**/.DS_Store
+
+# === 未使用・旧バージョンの大容量ファイル ===
+assets/images/scroll_2.mp4
+assets/images/hatano_logo.png
+assets/images/tsuruya.png
+assets/images/写真の入れ方.txt
+assets/videos/hero.mp4
+assets/videos/scroll.mp4
+assets/videos/scroll2.mp4
