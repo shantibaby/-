@@ -763,9 +763,14 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   .logo-mark{height:28px}
   .logo .mark{font-size:.98rem;white-space:nowrap}
   .lang-toggle{padding:6px 11px;font-size:.72rem}
-  /* カードは下部バーの上に・電話ボタンは下部バーと重複するため非表示 */
-  .hero{align-items:flex-end;padding-bottom:calc(74px + env(safe-area-inset-bottom))}
+  /* カードを初期画面より下に配置：ヒーローを112svhに伸ばし、カードは下端アンカーのまま
+     （ファーストビューは背景が主役・カードは上端が覗く→スクロールで全体が現れる） */
+  .hero{align-items:flex-end;height:112svh!important;min-height:640px;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
   .hero-ctas .btn-ghost{display:none}
+  /* ボタンの縦幅を圧縮 */
+  .hero-ctas .btn-primary{padding:10px 16px 10px 26px!important}
+  .hero-ctas .btn-primary-wrap{padding:3px}
+  .hero-arrow{width:30px;height:30px}
   .hero-card{
     width:100%;padding:18px 18px 20px;border-radius:18px;
     background:rgba(255,255,255,.14)!important;
