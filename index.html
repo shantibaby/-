@@ -537,18 +537,79 @@ body::before{display:none!important}
 @media(max-width:560px){.deck-arrow{display:none}}
 
 /* ===== 信頼 ===== */
-.cert{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(48px,7vw,80px)}
-.cert h3{font-family:var(--jp);font-weight:700;font-size:clamp(1.2rem,2.6vw,1.6rem);margin-bottom:8px;color:#fff}
-.cert p{color:var(--muted);font-size:.92rem;margin-bottom:30px}
-.cert-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}
-/* モバイルは認定代理店を縦1列に */
-@media(max-width:560px){.cert-logos{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto;gap:16px}}
-.cert-logo{border-radius:14px;padding:22px 20px;min-width:0;text-align:center;
-  background:var(--glass);border:1px solid var(--glass-bd);
-  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.cert-logo .cert-img{display:block;width:100%;max-width:220px;height:60px;object-fit:contain;background:#fff;border-radius:10px;padding:15px 30px;margin:0 auto 14px;box-sizing:border-box}
-.cert-logo .nm{font-family:var(--jp);font-weight:700;font-size:1.05rem;color:#fff}
-.cert-logo .ty{font-size:.7rem;color:var(--sora);font-weight:600;letter-spacing:.1em;margin-top:4px}
+.trust>.wrap{padding-bottom:clamp(48px,7vw,90px)}
+/* メーカー：独立したステージを固定し、3社を横へ送る */
+.cert{--maker-width:min(72vw,860px);--maker-gap:32px;position:relative}
+.cert-stage{position:relative;padding:100px 0 64px;background:rgba(13,19,25,.94);isolation:isolate}
+.cert-stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 85% 15%,rgba(135,206,235,.12),transparent 55%),
+    repeating-linear-gradient(130deg,transparent 0 119px,rgba(255,255,255,.035) 120px 121px)}
+.cert-head,.cert-footer{width:min(100% - 64px,1108px);margin-inline:auto}
+.cert-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:32px}
+.cert-head .sec-kicker{margin-bottom:8px;font-size:.66rem}
+.cert-head h3{font-family:var(--jp);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.8rem);line-height:1.4}
+.cert-head p{max-width:320px;font-size:.83rem;line-height:1.9;color:var(--muted-2)}
+.cert-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:min(100% - 64px,1108px);margin:auto}
+.cert-logo{position:relative;isolation:isolate;min-width:0;min-height:300px;padding:28px;
+  display:flex;flex-direction:column;justify-content:space-between;overflow:clip;
+  border-radius:20px;border:1px solid rgba(168,204,224,.26);background:linear-gradient(130deg,#334b5c,#182630);
+  box-shadow:0 18px 42px rgba(0,0,0,.2)}
+.cert-logo:nth-child(2){background:linear-gradient(130deg,#48494a,#232a2e)}
+.cert-logo:nth-child(3){background:linear-gradient(130deg,#314b50,#182b32)}
+.cert-logo::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none;
+  background:repeating-linear-gradient(160deg,transparent 0 35px,rgba(200,231,245,.6) 36px 37px,transparent 38px 70px);
+  mask-image:linear-gradient(90deg,transparent 15%,#000);-webkit-mask-image:linear-gradient(90deg,transparent 15%,#000)}
+.cert-topline{display:flex;justify-content:space-between;align-items:center;font:500 .64rem var(--en);letter-spacing:.2em;color:rgba(255,255,255,.65)}
+.cert-index{font-size:.9rem;letter-spacing:.08em;color:var(--sora)}
+.cert-logo .cert-img{display:block;width:min(82%,360px);height:112px;object-fit:contain;
+  background:#fff;border-radius:4px;padding:30px 40px;margin:30px auto;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.cert-caption{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.cert-logo .nm{font-family:var(--jp);font-weight:600;font-size:clamp(1.35rem,3.6vw,2.6rem);color:#fff;line-height:1.4}
+.cert-logo .ty{font-size:.68rem;color:var(--sora);letter-spacing:.13em;margin-top:6px}
+.cert-mark{width:38px;height:38px;border:1px solid rgba(255,255,255,.3);border-radius:50%;
+  display:grid;place-items:center;color:var(--sora);font-size:1.1rem}
+.cert-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:26px}
+.cert-controls{display:none;align-items:center;gap:10px}
+.cert-step{appearance:none;display:flex;align-items:center;justify-content:center;width:38px;height:38px;
+  border:1px solid rgba(255,255,255,.22);border-radius:50%;background:transparent;color:var(--muted-2);
+  font:500 .68rem var(--en);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.cert-step.is-active{background:var(--orange);border-color:var(--orange);color:#fff}
+.cert-step:focus-visible,.cert-skip:focus-visible{outline:2px solid var(--sora);outline-offset:5px}
+.cert-progress{width:clamp(60px,10vw,150px);height:2px;background:rgba(255,255,255,.18);margin-left:12px}
+.cert-progress span{display:block;width:100%;height:100%;background:var(--sora);transform:scaleX(0);transform-origin:left}
+.cert-scroll-hint{display:none;font-size:.7rem;letter-spacing:.1em;color:var(--muted-2)}
+.cert-skip{font-size:.73rem;color:var(--muted);white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.3);padding:8px 0}
+.cert-skip:hover{color:#fff;border-color:var(--sora)}
+.cert.has-horizontal .cert-stage{height:100svh;min-height:620px;padding:110px 0 40px;display:flex;flex-direction:column;justify-content:center}
+.cert.has-horizontal .cert-viewport{overflow:clip;width:100%}
+.cert.has-horizontal .cert-track{display:flex;gap:var(--maker-gap);width:max-content;margin:0;
+  padding-inline:calc((100vw - var(--maker-width))/2);will-change:transform}
+.cert.has-horizontal .cert-logo{flex:0 0 var(--maker-width);width:var(--maker-width);height:clamp(270px,43svh,440px);min-height:0;padding:clamp(24px,3vw,42px)}
+.cert.has-horizontal .cert-img{height:clamp(90px,14svh,130px);margin:16px auto}
+.cert.has-horizontal .cert-controls{display:flex}
+.cert.has-horizontal .cert-scroll-hint{display:block}
+@media(max-width:880px){
+  .cert{--maker-width:84vw;--maker-gap:18px}
+  .cert-head,.cert-footer{width:calc(100% - 40px)}
+  .cert-head{display:block;margin-bottom:24px}
+  .cert-head p{max-width:none;margin-top:10px;font-size:.76rem}
+  .cert-track{grid-template-columns:1fr;width:min(100% - 40px,560px)}
+  .cert-stage{padding:72px 0 48px}
+  .cert.has-horizontal .cert-stage{padding:105px 0 100px}
+  .cert.has-horizontal .cert-logo{height:clamp(245px,37svh,360px)}
+  .cert-scroll-hint{display:none!important}
+  .cert-footer{gap:12px;margin-top:22px}
+  .cert-progress{width:44px;margin-left:2px}
+  .cert-step{width:32px;height:32px}
+  .cert-controls{gap:7px}
+  .cert-skip{font-size:.68rem}
+}
+@media(max-width:390px){
+  .cert-head h3{font-size:1.6rem}
+  .cert-head p{font-size:.7rem}
+  .cert.has-horizontal .cert-logo{padding:22px}
+  .cert-progress{display:none}
+}
 .guarantee{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(20px,3vw,40px);align-items:center;border-radius:24px;padding:clamp(30px,4vw,56px);margin-bottom:clamp(48px,7vw,80px);
   background:var(--glass);border:1px solid var(--glass-bd);position:relative;overflow:hidden;
   -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 12px 30px rgba(0,0,0,.26)}
@@ -1287,13 +1348,42 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </div>
     </div>
 
-    <div class="cert reveal" style="margin-top:80px">
-      <h3 data-en="Authorized Manufacturer Dealer">メーカー認定代理店</h3>
-      <p data-en="Proof of solid quality — we hold official certification from top manufacturers.">確かな品質の証。一流メーカーの正規認定を受けています。</p>
-      <div class="cert-logos">
-        <div class="cert-logo"><img class="cert-img" src="assets/images/maker-kmew.png" alt="KMEW（ケイミュー）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm">KMEW</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
-        <div class="cert-logo"><img class="cert-img" src="assets/images/maker-sanshu.png" alt="鶴弥（三州瓦）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Tsuruya (Sanshu Tile)">鶴弥（三州瓦）</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
-        <div class="cert-logo"><img class="cert-img" src="assets/images/maker-awaji.png" alt="淡路瓦 認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Awaji Tile">淡路瓦</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
+  </div>
+
+  <div class="cert" id="makers" role="region" aria-labelledby="makersTitle">
+    <div class="cert-stage">
+      <div class="cert-head">
+        <div><span class="sec-kicker">Manufacturers</span><h3 id="makersTitle" data-en="Authorized Manufacturer Dealers">メーカー認定代理店</h3></div>
+        <p data-en="Proof of solid quality — we hold official certification from top manufacturers.">確かな品質の証。一流メーカーの正規認定を受けています。</p>
+      </div>
+      <div class="cert-viewport">
+        <div class="cert-track">
+          <article class="cert-logo">
+            <div class="cert-topline" aria-hidden="true"><span>Authorized Dealer</span><span class="cert-index">01 / 03</span></div>
+            <img class="cert-img" src="assets/images/maker-kmew.png" alt="KMEW（ケイミュー）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'">
+            <div class="cert-caption"><div><h4 class="nm">KMEW</h4><div class="ty" data-en="Authorized Dealer">認定代理店</div></div><span class="cert-mark" aria-hidden="true">✓</span></div>
+          </article>
+          <article class="cert-logo">
+            <div class="cert-topline" aria-hidden="true"><span>Authorized Dealer</span><span class="cert-index">02 / 03</span></div>
+            <img class="cert-img" src="assets/images/maker-sanshu.png" alt="鶴弥（三州瓦）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'">
+            <div class="cert-caption"><div><h4 class="nm" data-en="Tsuruya (Sanshu Tile)">鶴弥（三州瓦）</h4><div class="ty" data-en="Authorized Dealer">認定代理店</div></div><span class="cert-mark" aria-hidden="true">✓</span></div>
+          </article>
+          <article class="cert-logo">
+            <div class="cert-topline" aria-hidden="true"><span>Authorized Dealer</span><span class="cert-index">03 / 03</span></div>
+            <img class="cert-img" src="assets/images/maker-awaji.png" alt="淡路瓦 認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'">
+            <div class="cert-caption"><div><h4 class="nm" data-en="Awaji Tile">淡路瓦</h4><div class="ty" data-en="Authorized Dealer">認定代理店</div></div><span class="cert-mark" aria-hidden="true">✓</span></div>
+          </article>
+        </div>
+      </div>
+      <div class="cert-footer">
+        <div class="cert-controls" role="group" aria-label="Manufacturers">
+          <button class="cert-step is-active" type="button" aria-label="KMEW" aria-pressed="true">01</button>
+          <button class="cert-step" type="button" aria-label="鶴弥 / Tsuruya" aria-pressed="false">02</button>
+          <button class="cert-step" type="button" aria-label="淡路瓦 / Awaji Tile" aria-pressed="false">03</button>
+          <div class="cert-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <span class="cert-scroll-hint" data-en="SCROLL TO EXPLORE →">スクロールして、次のメーカーへ →</span>
+        <a class="cert-skip" href="#faq" data-en="Continue to FAQ ↓">よくあるご質問へ ↓</a>
       </div>
     </div>
   </div>
@@ -1623,6 +1713,10 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       document.documentElement.setAttribute('lang',en?'en':'ja');
       langToggle.textContent=en?'日本語':'EN';
       isEN=en;
+      requestAnimationFrame(function(){
+        if(window.ScrollTrigger){ScrollTrigger.refresh();}
+        if(lenis){lenis.resize();}
+      });
     };
     langToggle.addEventListener('click',function(){setLang(!isEN);});
   }
@@ -1841,6 +1935,69 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     });
   }else{
     document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
+  }
+
+  /* ---- メーカー：縦スクロール → 横送り → FAQへ自然に解除 ---- */
+  var makers=document.getElementById('makers');
+  if(makers && window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    var makerMedia=gsap.matchMedia();
+    // 高さが足りない画面・動きを抑える設定では、全社を通常配置で表示。
+    makerMedia.add('(prefers-reduced-motion: no-preference) and (min-width: 881px) and (min-height: 620px), (prefers-reduced-motion: no-preference) and (max-width: 880px) and (min-height: 720px)',function(){
+      var stage=makers.querySelector('.cert-stage');
+      var viewport=makers.querySelector('.cert-viewport');
+      var track=makers.querySelector('.cert-track');
+      var steps=[].slice.call(makers.querySelectorAll('.cert-step'));
+      var progress=makers.querySelector('.cert-progress span');
+      makers.classList.add('has-horizontal');
+      var distance=function(){return Math.max(0,track.scrollWidth-viewport.clientWidth);};
+      var current=-1;
+      var paint=function(p){
+        progress.style.transform='scaleX('+p+')';
+        var next=Math.round(p*(steps.length-1));
+        if(next===current)return;
+        current=next;
+        steps.forEach(function(button,i){
+          button.classList.toggle('is-active',i===current);
+          button.setAttribute('aria-pressed',i===current?'true':'false');
+        });
+      };
+      var movement={progress:0};
+      var timeline=gsap.timeline({
+        scrollTrigger:{
+          trigger:makers,start:'top top',
+          end:function(){return '+='+Math.max(distance(),window.innerHeight*1.6);},
+          pin:stage,pinSpacing:true,scrub:.45,anticipatePin:1,
+          invalidateOnRefresh:true,refreshPriority:1
+        },
+        onUpdate:function(){paint(movement.progress);}
+      });
+      // 前後に短い静止区間を設け、1社目と3社目も読み切れるようにする。
+      timeline.to(track,{x:function(){return -distance();},duration:1,ease:'none'},.08)
+        .to(movement,{progress:1,duration:1,ease:'none'},.08)
+        .to({}, {duration:.08});
+      var handlers=steps.map(function(button,i){
+        var handler=function(){
+          var trigger=timeline.scrollTrigger;
+          var fraction=(.08+i/(steps.length-1))/timeline.duration();
+          var target=trigger.start+(trigger.end-trigger.start)*fraction;
+          if(lenis){lenis.scrollTo(target,{duration:.7});}
+          else{window.scrollTo({top:target,behavior:'smooth'});}
+        };
+        button.addEventListener('click',handler);
+        return handler;
+      });
+      paint(0);
+      requestAnimationFrame(function(){ScrollTrigger.refresh();if(lenis){lenis.resize();}});
+      return function(){
+        steps.forEach(function(button,i){button.removeEventListener('click',handlers[i]);});
+        makers.classList.remove('has-horizontal');
+        progress.style.removeProperty('transform');
+      };
+    });
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(function(){ScrollTrigger.refresh();if(lenis){lenis.resize();}});
+    }
   }
 
   /* ---- カウントアップ（スロットマシン演出・強化版）---- */
