@@ -265,9 +265,9 @@ section{position:relative}
 .hero-line-one{display:inline-block;white-space:nowrap}
 h1 .accent,h2 .sora{font-weight:800}
 .accent-letter{display:inline-block;transform-origin:center bottom}
-@keyframes accentBeat{0%,100%{transform:scale(1)}42%{transform:scale(1.3)}}
+@keyframes accentBeat{0%,10%,100%{transform:scale(1)}4%{transform:scale(1.3)}}
 @media(prefers-reduced-motion:no-preference){
- .hero-text-beat h1 .accent-letter,h2.accent-beat .accent-letter{animation:accentBeat .46s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--letter-index) * .105s)}
+ .hero-text-beat h1 .accent-letter,h2.accent-beat .accent-letter{animation:accentBeat 2.8s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--letter-index) * .105s)}
 }
 .hero .lead{font-size:clamp(.95rem,1.7vw,1.12rem);color:rgba(255,255,255,.9);margin-bottom:36px;font-weight:500}
 .hero-ctas{display:flex;flex-direction:row;gap:16px;flex-wrap:wrap}
@@ -965,6 +965,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 /* サービスの横送り：外部ライブラリなしでも動作 */
 .svc-window,.svc-viewport{min-width:0}
 .svc-viewport{overflow:hidden}
+.services.svc-horizontal .svc-viewport{overflow:visible}
 .services.svc-swipe .svc-viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px}
 .services.svc-swipe .svc-list{flex-direction:row;gap:18px}
 .services.svc-swipe .svc-card{flex:0 0 92%;scroll-snap-align:start;opacity:1!important;transform:none!important}
@@ -1039,7 +1040,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 
 <!-- ===== 全画面スクロール連動 背景動画 ===== -->
 <div class="bgvideo" aria-hidden="true">
-  <video id="scrollVideo" muted playsinline preload="none" tabindex="-1">
+  <video id="scrollVideo" muted playsinline preload="auto" tabindex="-1">
     <source src="assets/videos/scroll2-v2.mp4" type="video/mp4">
   </video>
 </div>
@@ -1775,10 +1776,18 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   // ヒーロー動画が最後まで再生されたら、ホワイトアウトしてスクロール動画(背景)へ切替
   if(heroVideo){
     var heroBg=document.querySelector('.hero-bg');
+    var scrollVideoForSwap=document.getElementById('scrollVideo');
     var whiteout=document.getElementById('whiteout');
     var heroSwapped=false;
+    var swapPending=false;
     var swapToScrollVideo=function(){
-      if(heroSwapped)return; heroSwapped=true;
+      if(heroSwapped)return;
+      // 二本目の最初のフレームが届くまで、一本目の最終フレームを残す。
+      if(scrollVideoForSwap && scrollVideoForSwap.readyState<2){
+        if(!swapPending){swapPending=true;scrollVideoForSwap.addEventListener('loadeddata',swapToScrollVideo,{once:true});}
+        return;
+      }
+      heroSwapped=true;
       if(window.gsap && !reduceMotion && whiteout){
         gsap.timeline()
           .to(whiteout,{opacity:1,duration:.35,ease:'power2.in'})
@@ -1903,13 +1912,12 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     // スクロール連動動画：スクロール量に合わせて再生位置(currentTime)を進める
     var scrollVideo=document.getElementById('scrollVideo');
     if(scrollVideo){
-      // 初回スクロールで読み込みとシーク準備を開始し、表示直後の先走った再生を防ぐ
+      // 映像データは先読みし、シーク準備だけ初回スクロール時に行う。
       var scrollPrimed=false;
       var primeScrollVideo=function(){
         if(scrollPrimed)return;scrollPrimed=true;
-        scrollVideo.preload='auto';scrollVideo.load();
         var prime=scrollVideo.play();
-        if(prime&&prime.then){prime.then(function(){scrollVideo.pause();scrollVideo.currentTime=0;}).catch(function(){});}
+        if(prime&&prime.then){prime.then(function(){scrollVideo.pause();}).catch(function(){});}
       };
       window.addEventListener('scroll',primeScrollVideo,{once:true,passive:true});
       // ページ全体のスクロールに同期。フッターの最後で再生が終わる
