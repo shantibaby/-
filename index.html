@@ -457,8 +457,6 @@ body::before{display:none!important}
 .svc-photo--care img{object-position:50% 43%}
 .svc-photo--temple img{object-position:50% 39%}
 .svc-photo::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(8,14,18,.54));pointer-events:none}
-.svc-photo figcaption{position:absolute;left:20px;bottom:16px;z-index:1;padding:5px 12px;border:1px solid rgba(255,255,255,.25);border-radius:30px;
-  background:rgba(22,36,44,.2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#fff;font-size:.67rem;letter-spacing:.07em}
 .svc-content{padding:clamp(24px,3vw,34px)}
 @media(prefers-reduced-motion:reduce){.svc-photo img{transition:none}.svc-card:hover .svc-photo img{transform:none}}
 .svc-no{font-family:var(--en);font-size:.74rem;color:var(--sora);font-weight:700;letter-spacing:.16em}
@@ -783,7 +781,6 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   .hero-ctas .btn-primary-wrap{padding:3px}
   .hero-arrow{width:30px;height:30px}
   .svc-content{padding:22px}
-  .svc-photo figcaption{left:16px;bottom:12px;font-size:.62rem}
   /* 会社概要：見出しセルは折り返さない・余白圧縮 */
   .comp-table th{white-space:nowrap;width:auto;padding:14px 12px}
   .comp-table td{padding:14px 14px}
@@ -958,32 +955,33 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 .faq-a-inner{padding-bottom:24px;border-top:1px solid rgba(255,255,255,.07);padding-top:16px}
 
 /* サービスの横送り：外部ライブラリなしでも動作 */
-.svc-window{min-width:0}
-.services.svc-swipe .svc-window{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px}
+.svc-window,.svc-viewport{min-width:0}
+.svc-viewport{overflow:hidden}
+.services.svc-swipe .svc-viewport{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px}
 .services.svc-swipe .svc-list{flex-direction:row;gap:18px}
 .services.svc-swipe .svc-card{flex:0 0 92%;scroll-snap-align:start;opacity:1!important;transform:none!important}
 .svc-scroll-label{display:none}
+.svc-image-note{margin-top:10px;color:var(--muted-2);font-size:.75rem;line-height:1.5;text-align:right}
 .services.svc-horizontal{padding-block:0!important}
 .services.svc-horizontal .svc-split{position:sticky;top:0;height:100svh!important;align-items:center;overflow:hidden!important}
 .services.svc-horizontal .svc-intro{position:static!important;align-self:center!important}
-.services.svc-horizontal .svc-window{overflow:hidden;padding-block:16px;width:min(100%,440px);margin-inline:auto}
-.services.svc-horizontal .svc-list{flex-direction:row;gap:24px;will-change:transform;transition:transform .65s cubic-bezier(.22,1,.36,1)}
-.services.svc-horizontal .svc-card{flex:0 0 100%;width:100%;opacity:1!important;transform:none!important;max-height:calc(100svh - 160px);overflow-y:auto}
+.services.svc-horizontal .svc-window{padding-block:16px;width:min(100%,440px);margin-inline:auto}
+.services.svc-horizontal .svc-list{flex-direction:row;gap:24px;will-change:transform}
+.services.svc-horizontal .svc-card{flex:0 0 100%;width:100%;opacity:1!important;transform:none!important}
 .services.svc-horizontal .svc-photo{aspect-ratio:auto;height:clamp(160px,27svh,270px)}
 .services.svc-horizontal .svc-content{padding:24px}
 .services.svc-horizontal .svc-tags{display:none}
 .services.svc-horizontal .svc-scroll-label{display:flex;justify-content:space-between;gap:10px;color:var(--muted-2);font-size:.65rem;letter-spacing:.08em;margin-top:14px}
 @media(max-width:880px){
- .services.svc-horizontal .svc-split{display:flex;flex-direction:column;justify-content:flex-start;gap:18px;padding-top:92px;padding-bottom:72px}
- .services.svc-horizontal .svc-intro{width:100%;flex:none}
+ .services.svc-horizontal .svc-split{position:relative;top:auto;height:100%!important;display:block;padding-top:92px;padding-bottom:0;overflow:visible!important}
+ .services.svc-horizontal .svc-intro{width:100%;margin-bottom:24px}
  .services.svc-horizontal .svc-intro .sec-head{margin-bottom:0}
  .services.svc-horizontal .svc-intro .sec-title{font-size:1.35rem;line-height:1.5}
  .services.svc-horizontal .svc-intro .sec-lead{font-size:.72rem;line-height:1.7;margin-top:8px}
  .services.svc-horizontal .svc-cta-mini{display:none}
- .services.svc-horizontal .svc-window{width:min(100%,310px);padding-block:0;flex:1;min-height:0;display:flex;flex-direction:column}
- .services.svc-horizontal .svc-list{flex:1;min-height:0}
+ .services.svc-horizontal .svc-window{position:sticky;top:64px;width:min(100%,310px);height:calc(100svh - 64px);padding-block:12px;display:flex;flex-direction:column;justify-content:center}
  .services.svc-horizontal .svc-photo{height:clamp(160px,21svh,190px)}
- .services.svc-horizontal .svc-card{height:100%;max-height:100%;border-radius:18px}
+ .services.svc-horizontal .svc-card{border-radius:18px}
  .services.svc-horizontal .svc-content{padding:18px}
  .services.svc-horizontal .svc-card h3{font-size:1.05rem;margin:6px 0 10px}
  .services.svc-horizontal .svc-card p{font-size:.77rem;line-height:1.8;margin-bottom:12px}
@@ -1015,7 +1013,6 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .hero h1{font-size:1.55rem}
  .hero .lead{font-size:1rem}
  .sec-title{font-size:1.82rem}
- .svc-photo figcaption{font-size:.73rem}
  .svc-no{font-size:.82rem}
  .svc-badge{font-size:.76rem}
  .voice p,.faq-a,.comp-table td,.deck-meta .desc{font-size:1rem}
@@ -1187,10 +1184,10 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         <a href="#contact" class="btn btn-primary" data-en="Free Consultation">無料で相談する</a>
       </div>
     </div>
-    <div class="svc-window"><div class="svc-list">
+    <div class="svc-window"><div class="svc-viewport"><div class="svc-list">
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--house"><img src="assets/images/service-house-illustration.jpg" alt="瓦屋根の住宅を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
+        <figure class="svc-photo svc-photo--house"><img src="assets/images/service-house-illustration.jpg" alt="瓦屋根の住宅を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"></figure>
         <div class="svc-content">
           <span class="svc-no en">01 / HOUSE</span><span class="svc-badge" data-en="Specialty">得意分野</span>
           <h3 data-en="Tile Work for Japanese-Style Homes">日本家屋・和風住宅の瓦工事</h3>
@@ -1201,7 +1198,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </article>
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--leak"><img src="assets/images/service-leak-illustration.jpg" alt="雨にぬれた瓦屋根を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
+        <figure class="svc-photo svc-photo--leak"><img src="assets/images/service-leak-illustration.jpg" alt="雨にぬれた瓦屋根を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"></figure>
         <div class="svc-content">
           <span class="svc-no en">02 / LEAK</span>
           <h3 data-en="Leak Repair (Tile-Specialist Diagnosis)">雨漏り修理（瓦専門の診断）</h3>
@@ -1212,7 +1209,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </article>
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--care"><img src="assets/images/service-care-illustration.jpg" alt="瓦屋根の棟を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
+        <figure class="svc-photo svc-photo--care"><img src="assets/images/service-care-illustration.jpg" alt="瓦屋根の棟を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"></figure>
         <div class="svc-content">
           <span class="svc-no en">03 / CARE</span>
           <h3 data-en="Routine Tile Maintenance &amp; Wind Protection">瓦の定期メンテナンス・耐風対策</h3>
@@ -1223,7 +1220,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </article>
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--temple"><img src="assets/images/service-temple-illustration.jpg" alt="寺院の瓦屋根を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
+        <figure class="svc-photo svc-photo--temple"><img src="assets/images/service-temple-illustration.jpg" alt="寺院の瓦屋根を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"></figure>
         <div class="svc-content">
           <span class="svc-no en">04 / TEMPLE</span>
           <h3 data-en="Shrine, Temple &amp; Cultural-Property Tiling">神社仏閣・文化財の瓦工事</h3>
@@ -1233,7 +1230,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         </div>
       </article>
 
-    </div><div class="svc-scroll-label"><span class="svc-current">01 / 04</span><span data-en="SCROLL TO EXPLORE →">スクロールして、次のサービスへ →</span></div></div>
+    </div></div><div class="svc-scroll-label"><span class="svc-current">01 / 04</span><span data-en="SCROLL TO EXPLORE →">スクロールして、次のサービスへ →</span></div><p class="svc-image-note" data-en="Service visuals are AI-generated illustrations, not project photos.">掲載写真はAIで作成したイメージです。施工事例ではありません。</p></div>
   </div>
 </section>
 
@@ -1925,27 +1922,30 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   if(serviceSection){
     var serviceStage=serviceSection.querySelector('.svc-split');
     var serviceWindow=serviceSection.querySelector('.svc-window');
+    var serviceViewport=serviceSection.querySelector('.svc-viewport');
     var serviceTrack=serviceSection.querySelector('.svc-list');
     var serviceCurrent=serviceSection.querySelector('.svc-current');
-    var serviceDistance=0,serviceFrame=0;
+    var serviceDistance=0,serviceStartOffset=0,serviceFrame=0;
     var servicePaint=function(){
       serviceFrame=0;
       if(!serviceSection.classList.contains('svc-horizontal'))return;
-      var progress=Math.max(0,Math.min(1,-serviceSection.getBoundingClientRect().top/Math.max(1,serviceDistance)));
+      var progress=Math.max(0,Math.min(1,(-serviceSection.getBoundingClientRect().top-serviceStartOffset)/Math.max(1,serviceDistance)));
       var index=Math.min(3,Math.max(0,Math.round(progress*3)));
-      serviceTrack.style.transform='translate3d('+(-serviceDistance*index/3)+'px,0,0)';
+      serviceTrack.style.transform='translate3d('+(-serviceDistance*progress)+'px,0,0)';
       serviceCurrent.textContent='0'+(index+1)+' / 04';
     };
     var serviceQueue=function(){if(!serviceFrame)serviceFrame=requestAnimationFrame(servicePaint);};
     var serviceLayout=function(){
-      var active=!reduceMotion && (window.innerWidth>880 || window.innerHeight>=780);
+      var mobile=window.innerWidth<=880;
+      var active=!reduceMotion && (!mobile || window.innerHeight>=780);
       serviceSection.classList.toggle('svc-horizontal',active);
       serviceSection.classList.toggle('svc-swipe',!reduceMotion && !active);
       serviceTrack.style.removeProperty('transform');
       serviceSection.style.removeProperty('height');
       if(active){
-        serviceDistance=Math.max(0,serviceTrack.scrollWidth-serviceWindow.clientWidth);
-        serviceSection.style.height=(window.innerHeight+serviceDistance)+'px';
+        serviceDistance=Math.max(0,serviceTrack.scrollWidth-serviceViewport.clientWidth);
+        serviceStartOffset=mobile?serviceWindow.offsetTop-64:0;
+        serviceSection.style.height=(mobile?serviceWindow.offsetTop+serviceWindow.offsetHeight+serviceDistance:window.innerHeight+serviceDistance)+'px';
       }
       serviceQueue();
     };
