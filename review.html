@@ -68,6 +68,7 @@
 html{scroll-behavior:auto;overflow-x:clip;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{
   font-family:var(--jp-sans);
+  font-size:1.0625rem;
   color:var(--txt);
   background:var(--bg);
   line-height:1.8;
@@ -451,10 +452,10 @@ body::before{display:none!important}
 .svc-photo{position:relative;aspect-ratio:2/1;overflow:clip;border-bottom:1px solid var(--glass-bd);background:rgba(255,255,255,.04)}
 .svc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.6,.25,1)}
 .svc-card:hover .svc-photo img{transform:scale(1.035)}
-.svc-photo--house img{object-position:50% 36%}
-.svc-photo--leak img{object-position:50% 65%}
-.svc-photo--care img{object-position:50% 28%}
-.svc-photo--temple img{object-position:50% 0%}
+.svc-photo--house img{object-position:50% 43%}
+.svc-photo--leak img{object-position:50% 52%}
+.svc-photo--care img{object-position:50% 43%}
+.svc-photo--temple img{object-position:50% 39%}
 .svc-photo::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(8,14,18,.54));pointer-events:none}
 .svc-photo figcaption{position:absolute;left:20px;bottom:16px;z-index:1;padding:5px 12px;border:1px solid rgba(255,255,255,.25);border-radius:30px;
   background:rgba(22,36,44,.2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#fff;font-size:.67rem;letter-spacing:.07em}
@@ -961,33 +962,31 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 .services.svc-swipe .svc-window{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px}
 .services.svc-swipe .svc-list{flex-direction:row;gap:18px}
 .services.svc-swipe .svc-card{flex:0 0 92%;scroll-snap-align:start;opacity:1!important;transform:none!important}
-.svc-progress,.svc-scroll-label{display:none}
+.svc-scroll-label{display:none}
 .services.svc-horizontal{padding-block:0!important}
 .services.svc-horizontal .svc-split{position:sticky;top:0;height:100svh!important;align-items:center;overflow:hidden!important}
 .services.svc-horizontal .svc-intro{position:static!important;align-self:center!important}
-.services.svc-horizontal .svc-window{overflow:hidden;padding-block:16px}
+.services.svc-horizontal .svc-window{overflow:hidden;padding-block:16px;width:min(100%,440px);margin-inline:auto}
 .services.svc-horizontal .svc-list{flex-direction:row;gap:24px;will-change:transform}
 .services.svc-horizontal .svc-card{flex:0 0 100%;width:100%;opacity:1!important;transform:none!important;max-height:calc(100svh - 160px);overflow-y:auto}
 .services.svc-horizontal .svc-photo{aspect-ratio:auto;height:clamp(160px,27svh,270px)}
 .services.svc-horizontal .svc-content{padding:24px}
-.services.svc-horizontal .svc-progress{display:block;height:2px;background:rgba(255,255,255,.2);margin-top:22px}
-.svc-progress span{display:block;height:100%;background:var(--sora);transform:scaleX(0);transform-origin:left}
-.services.svc-horizontal .svc-scroll-label{display:flex;justify-content:space-between;gap:10px;color:var(--muted-2);font-size:.65rem;letter-spacing:.08em;margin-top:12px}
+.services.svc-horizontal .svc-tags{display:none}
+.services.svc-horizontal .svc-scroll-label{display:flex;justify-content:space-between;gap:10px;color:var(--muted-2);font-size:.65rem;letter-spacing:.08em;margin-top:14px}
 @media(max-width:880px){
- .services.svc-horizontal .svc-split{display:flex;flex-direction:column;justify-content:center;gap:18px;padding-top:92px;padding-bottom:72px}
- .services.svc-horizontal .svc-intro{width:100%}
+ .services.svc-horizontal .svc-split{display:flex;flex-direction:column;justify-content:flex-start;gap:18px;padding-top:92px;padding-bottom:72px}
+ .services.svc-horizontal .svc-intro{width:100%;flex:none}
  .services.svc-horizontal .svc-intro .sec-head{margin-bottom:0}
  .services.svc-horizontal .svc-intro .sec-title{font-size:1.35rem;line-height:1.5}
  .services.svc-horizontal .svc-intro .sec-lead{font-size:.72rem;line-height:1.7;margin-top:8px}
  .services.svc-horizontal .svc-cta-mini{display:none}
- .services.svc-horizontal .svc-window{width:100%;padding-block:0}
- .services.svc-horizontal .svc-photo{height:clamp(110px,17svh,160px)}
- .services.svc-horizontal .svc-card{max-height:calc(100svh - 320px);border-radius:18px}
+ .services.svc-horizontal .svc-window{width:min(100%,310px);padding-block:0;flex:1;min-height:0;display:flex;flex-direction:column}
+ .services.svc-horizontal .svc-list{flex:1;min-height:0}
+ .services.svc-horizontal .svc-photo{height:clamp(160px,21svh,190px)}
+ .services.svc-horizontal .svc-card{height:100%;max-height:100%;border-radius:18px}
  .services.svc-horizontal .svc-content{padding:18px}
  .services.svc-horizontal .svc-card h3{font-size:1.05rem;margin:6px 0 10px}
  .services.svc-horizontal .svc-card p{font-size:.77rem;line-height:1.8;margin-bottom:12px}
- .services.svc-horizontal .svc-tags{gap:5px}
- .services.svc-horizontal .svc-progress{margin-top:14px}
 }
 @media(max-width:560px){
  .stats-grid>.stat:nth-child(1){order:1}
@@ -995,6 +994,31 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .stats-grid>.stat:nth-child(2){order:3}
  .stats-grid>.stat:nth-child(3){order:4}
  .stats-grid>.stat:nth-child(5){order:5}
+}
+
+/* 読みやすさ：説明文と操作に使う文字をPC・スマホとも大きくする */
+.nav a,.nav-cta-standalone,.svc-link{font-size:1rem}
+.sec-lead,.hero .lead{font-size:clamp(1.05rem,1.8vw,1.18rem)}
+.svc-card h3{font-size:clamp(1.3rem,2.6vw,1.7rem)}
+.svc-card p,.voice p,.cert p,.guarantee p,.cta-copy .desc,.cta-points li,.faq-a,.comp-table td,.deck-meta .desc{font-size:1.05rem}
+.faq-q{font-size:1.15rem}
+.svc-tags span,.stat .sub,.deck-meta .loc,.voice .who .at,.field label,.form-card .fsub,.cta-tel .hours{font-size:.9rem}
+.field input,.field select,.field textarea{font-size:1rem}
+@media(max-width:880px){
+ .services.svc-horizontal .svc-intro .sec-title{font-size:1.55rem}
+ .services.svc-horizontal .svc-intro .sec-lead{font-size:1rem;line-height:1.75}
+ .services.svc-horizontal .svc-card h3{font-size:1.18rem}
+ .services.svc-horizontal .svc-card p{font-size:1rem;line-height:1.7}
+ .services.svc-horizontal .svc-scroll-label{font-size:.77rem}
+}
+@media(max-width:560px){
+ .hero h1{font-size:1.55rem}
+ .hero .lead{font-size:1rem}
+ .sec-title{font-size:1.82rem}
+ .svc-photo figcaption{font-size:.73rem}
+ .svc-no{font-size:.82rem}
+ .svc-badge{font-size:.76rem}
+ .voice p,.faq-a,.comp-table td,.deck-meta .desc{font-size:1rem}
 }
 
 </style>
@@ -1166,7 +1190,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     <div class="svc-window"><div class="svc-list">
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--house"><img src="assets/images/work8.jpg" alt="瓦屋根の和風住宅の外観" width="1000" height="1000" loading="lazy" decoding="async"><figcaption data-en="A home with traditional roof tiles">瓦屋根の住まい</figcaption></figure>
+        <figure class="svc-photo svc-photo--house"><img src="assets/images/service-house-illustration.jpg" alt="瓦屋根の住宅を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
         <div class="svc-content">
           <span class="svc-no en">01 / HOUSE</span><span class="svc-badge" data-en="Specialty">得意分野</span>
           <h3 data-en="Tile Work for Japanese-Style Homes">日本家屋・和風住宅の瓦工事</h3>
@@ -1177,7 +1201,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </article>
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--leak"><img src="assets/images/work10.jpg" alt="瓦の重なりと棟を写した屋根のイメージ写真" width="1000" height="1000" loading="lazy" decoding="async"><figcaption data-en="Roof photo for illustration">屋根写真（イメージ）</figcaption></figure>
+        <figure class="svc-photo svc-photo--leak"><img src="assets/images/service-leak-illustration.jpg" alt="雨にぬれた瓦屋根を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
         <div class="svc-content">
           <span class="svc-no en">02 / LEAK</span>
           <h3 data-en="Leak Repair (Tile-Specialist Diagnosis)">雨漏り修理（瓦専門の診断）</h3>
@@ -1188,7 +1212,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </article>
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--care"><img src="assets/images/work9.jpg" alt="瓦屋根の外観を写した点検・耐風対策のイメージ写真" width="1000" height="1000" loading="lazy" decoding="async"><figcaption data-en="Roof photo for illustration">屋根写真（イメージ）</figcaption></figure>
+        <figure class="svc-photo svc-photo--care"><img src="assets/images/service-care-illustration.jpg" alt="瓦屋根の棟を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
         <div class="svc-content">
           <span class="svc-no en">03 / CARE</span>
           <h3 data-en="Routine Tile Maintenance &amp; Wind Protection">瓦の定期メンテナンス・耐風対策</h3>
@@ -1199,7 +1223,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </article>
 
       <article class="svc-card reveal">
-        <figure class="svc-photo svc-photo--temple"><img src="assets/images/work1.jpg" alt="寺院の瓦屋根と瓦工事の作業風景" width="1000" height="1000" loading="lazy" decoding="async"><figcaption data-en="Temple tile work">寺院の瓦工事</figcaption></figure>
+        <figure class="svc-photo svc-photo--temple"><img src="assets/images/service-temple-illustration.jpg" alt="寺院の瓦屋根を表現したイメージ" width="1086" height="1448" loading="lazy" decoding="async"><figcaption data-en="Illustrative image (AI-generated)">イメージ写真（AI生成）</figcaption></figure>
         <div class="svc-content">
           <span class="svc-no en">04 / TEMPLE</span>
           <h3 data-en="Shrine, Temple &amp; Cultural-Property Tiling">神社仏閣・文化財の瓦工事</h3>
@@ -1209,7 +1233,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         </div>
       </article>
 
-    </div><div class="svc-progress" aria-hidden="true"><span></span></div><div class="svc-scroll-label"><span class="svc-current">01 / 04</span><span data-en="SCROLL TO EXPLORE →">スクロールして、次のサービスへ →</span></div></div>
+    </div><div class="svc-scroll-label"><span class="svc-current">01 / 04</span><span data-en="SCROLL TO EXPLORE →">スクロールして、次のサービスへ →</span></div></div>
   </div>
 </section>
 
@@ -1902,7 +1926,6 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     var serviceStage=serviceSection.querySelector('.svc-split');
     var serviceWindow=serviceSection.querySelector('.svc-window');
     var serviceTrack=serviceSection.querySelector('.svc-list');
-    var serviceBar=serviceSection.querySelector('.svc-progress span');
     var serviceCurrent=serviceSection.querySelector('.svc-current');
     var serviceDistance=0,serviceFrame=0;
     var servicePaint=function(){
@@ -1910,12 +1933,11 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       if(!serviceSection.classList.contains('svc-horizontal'))return;
       var progress=Math.max(0,Math.min(1,-serviceSection.getBoundingClientRect().top/Math.max(1,serviceDistance)));
       serviceTrack.style.transform='translate3d('+(-serviceDistance*progress)+'px,0,0)';
-      serviceBar.style.transform='scaleX('+progress+')';
       serviceCurrent.textContent='0'+(Math.round(progress*3)+1)+' / 04';
     };
     var serviceQueue=function(){if(!serviceFrame)serviceFrame=requestAnimationFrame(servicePaint);};
     var serviceLayout=function(){
-      var active=!reduceMotion && window.innerHeight>=720;
+      var active=!reduceMotion && (window.innerWidth>880 || window.innerHeight>=780);
       serviceSection.classList.toggle('svc-horizontal',active);
       serviceSection.classList.toggle('svc-swipe',!reduceMotion && !active);
       serviceTrack.style.removeProperty('transform');
