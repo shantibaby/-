@@ -540,10 +540,7 @@ body::before{display:none!important}
 .trust>.wrap{padding-bottom:clamp(48px,7vw,90px)}
 /* メーカー：独立したステージを固定し、3社を横へ送る */
 .cert{--maker-width:min(72vw,860px);--maker-gap:32px;position:relative}
-.cert-stage{position:relative;padding:100px 0 64px;background:rgba(13,19,25,.94);isolation:isolate}
-.cert-stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(ellipse at 85% 15%,rgba(135,206,235,.12),transparent 55%),
-    repeating-linear-gradient(130deg,transparent 0 119px,rgba(255,255,255,.035) 120px 121px)}
+.cert-stage{position:relative;padding:100px 0 64px;background:transparent}
 .cert-head,.cert-footer{width:min(100% - 64px,1108px);margin-inline:auto}
 .cert-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:32px}
 .cert-head .sec-kicker{margin-bottom:8px;font-size:.66rem}
@@ -552,13 +549,9 @@ body::before{display:none!important}
 .cert-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:min(100% - 64px,1108px);margin:auto}
 .cert-logo{position:relative;isolation:isolate;min-width:0;min-height:300px;padding:28px;
   display:flex;flex-direction:column;justify-content:space-between;overflow:clip;
-  border-radius:20px;border:1px solid rgba(168,204,224,.26);background:linear-gradient(130deg,#334b5c,#182630);
+  border-radius:20px;border:1px solid var(--glass-bd);background:var(--glass);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
   box-shadow:0 18px 42px rgba(0,0,0,.2)}
-.cert-logo:nth-child(2){background:linear-gradient(130deg,#48494a,#232a2e)}
-.cert-logo:nth-child(3){background:linear-gradient(130deg,#314b50,#182b32)}
-.cert-logo::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none;
-  background:repeating-linear-gradient(160deg,transparent 0 35px,rgba(200,231,245,.6) 36px 37px,transparent 38px 70px);
-  mask-image:linear-gradient(90deg,transparent 15%,#000);-webkit-mask-image:linear-gradient(90deg,transparent 15%,#000)}
 .cert-topline{display:flex;justify-content:space-between;align-items:center;font:500 .64rem var(--en);letter-spacing:.2em;color:rgba(255,255,255,.65)}
 .cert-index{font-size:.9rem;letter-spacing:.08em;color:var(--sora)}
 .cert-logo .cert-img{display:block;width:min(82%,360px);height:112px;object-fit:contain;
