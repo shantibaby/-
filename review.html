@@ -1033,6 +1033,50 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .voice p,.faq-a,.comp-table td,.deck-meta .desc{font-size:1rem}
 }
 
+/* 確認用：相談バナーと依頼の流れ。既存の横送りには触れない */
+.consult-band .wrap{padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(28px,5vw,64px)}
+.consult-band-panel{position:relative;isolation:isolate;overflow:hidden;min-height:400px;padding:clamp(28px,5vw,62px);display:grid;grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr);align-items:end;gap:28px;border:1px solid rgba(255,225,201,.42);border-radius:18px;background:linear-gradient(128deg,#4a2b22 0%,#2d1e1b 58%,#20191a 100%);box-shadow:0 25px 70px rgba(0,0,0,.22)}
+.consult-band-panel::before{content:"瓦";position:absolute;z-index:-1;right:-.035em;top:-.45em;font-family:var(--jp);font-weight:700;font-size:clamp(270px,34vw,480px);line-height:1;color:rgba(255,229,207,.055);pointer-events:none}
+.consult-band-panel::after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,225,201,.16);border-radius:10px;pointer-events:none}
+.consult-band-kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;color:#ffbb91;font-size:.82rem;font-weight:800;letter-spacing:.13em}
+.consult-band-kicker::before{content:"";width:32px;height:2px;background:currentColor}
+.consult-band h2{font-family:var(--jp);font-weight:800;color:#fff;font-size:clamp(2.05rem,4.4vw,3.6rem);line-height:1.35;letter-spacing:.03em;text-shadow:0 2px 15px rgba(0,0,0,.38)}
+.consult-band h2 em{font-style:normal;color:#ffad78}
+.consult-band p{max-width:620px;margin-top:22px;color:rgba(255,255,255,.9);font-size:clamp(1rem,1.6vw,1.16rem);line-height:1.8;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+.consult-band-actions{display:grid;gap:12px;align-self:end}
+.consult-band-actions a{min-height:58px;padding:12px 16px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:8px;font-weight:800;font-size:1.08rem;text-decoration:none;transition:transform .2s,background .2s}
+.consult-band-actions a:hover{transform:translateY(-2px)}
+.consult-band-actions .consult-line{background:#ff7b34;color:#21130f}
+.consult-band-actions .consult-tel{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.7);color:#fff}
+.consult-band-actions small{display:block;color:rgba(255,255,255,.7);text-align:center;font-size:.8rem}
+.work-flow{background:rgba(9,13,17,.62)}
+.work-flow .wrap{padding-top:clamp(64px,9vw,110px);padding-bottom:clamp(80px,11vw,130px)}
+.work-flow .sec-head{margin-bottom:42px}
+.work-flow-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.25)}
+.work-flow-step{position:relative;padding:30px clamp(14px,3vw,36px) 34px}
+.work-flow-step+.work-flow-step{border-left:1px solid rgba(255,255,255,.2)}
+.work-flow-no{display:block;font-family:var(--en);font-weight:800;font-size:2.25rem;line-height:1;color:var(--sora);margin-bottom:24px}
+.work-flow-step h3{font-family:var(--jp);font-size:clamp(1.3rem,2vw,1.65rem);line-height:1.4;color:#fff;margin-bottom:12px}
+.work-flow-step p{font-size:1rem;line-height:1.75;color:var(--muted)}
+@media(max-width:720px){
+ .consult-band-panel{grid-template-columns:1fr;min-height:0;gap:24px}
+ .consult-band-actions{grid-template-columns:1fr 1fr;align-items:start}
+ .consult-band-actions small{grid-column:1/-1}
+ .work-flow-list{grid-template-columns:1fr}
+ .work-flow-step{display:grid;grid-template-columns:48px 1fr;column-gap:16px;padding:24px 4px}
+ .work-flow-step+.work-flow-step{border-left:0;border-top:1px solid rgba(255,255,255,.2)}
+ .work-flow-no{grid-row:span 2;margin:3px 0 0;font-size:1.75rem}
+ .work-flow-step h3{margin-bottom:6px}
+}
+@media(max-width:480px){
+ .consult-band-panel{padding:34px 24px 26px;aspect-ratio:auto;min-height:390px}
+ .consult-band h2{font-size:clamp(1.95rem,8vw,2.55rem)}
+ .consult-band p{font-size:1rem;margin-top:16px}
+ .consult-band-actions{gap:9px}
+ .consult-band-actions a{min-height:52px;font-size:.94rem;padding:10px 7px}
+ .consult-band-actions small{font-size:.72rem}
+}
+
 </style>
 </head>
 <body>
@@ -1249,6 +1293,24 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   </div>
 </section>
 
+<!-- 確認用：サービスを見た後の相談導線 -->
+<section class="consult-band" id="consult-banner" aria-labelledby="consult-banner-title">
+  <div class="wrap">
+    <div class="consult-band-panel">
+      <div>
+        <span class="consult-band-kicker" data-en="ROOF CONSULTATION">屋根の相談窓口</span>
+        <h2 id="consult-banner-title" data-en="Questions about your roof?<br><em>Start by talking to us.</em>">屋根のこと、<br><em>まずは相談から。</em></h2>
+        <p data-en="Tell us about your roof. We will explain the work needed and its cost in clear terms.">屋根の状態を伺い、必要な工事と費用をご説明します。</p>
+      </div>
+      <div class="consult-band-actions">
+        <a class="consult-line" href="https://line.me/ti/p/n2KM4ksPqv" target="_blank" rel="noopener" data-en="Ask on LINE ↗">LINEで相談する ↗</a>
+        <a class="consult-tel" href="tel:090-4273-1478" data-en="Call us ↗">電話で相談する ↗</a>
+        <small data-en="Choose whichever way is easiest for you.">ご都合のよい方法でご連絡ください</small>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== 施工事例 ===== -->
 <section class="gallery" id="gallery">
   <div class="wrap">
@@ -1308,6 +1370,22 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     </div>
     <div style="text-align:center;margin-top:46px" class="reveal">
       <a href="https://www.instagram.com/kabu.hatanokawaraten/" target="_blank" rel="noopener" class="btn btn-ghost"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="flex-shrink:0"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span data-en="See on Instagram">Instagramで見る</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 確認用：ご相談から工事まで -->
+<section class="work-flow" id="process" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">How it works</span>
+      <h2 class="sec-title" id="process-title" data-en="From your first call<br>to the finished roof">ご相談から、<span class="sora">工事まで</span></h2>
+      <p class="sec-lead" data-en="We explain what the roof needs before work begins.">工事を始める前に、屋根の状態と必要な内容をご説明します。</p>
+    </div>
+    <div class="work-flow-list">
+      <div class="work-flow-step"><span class="work-flow-no">01</span><h3 data-en="Get in touch">ご相談</h3><p data-en="Tell us what concerns you about your roof.">気になる症状やご希望をお聞かせください。</p></div>
+      <div class="work-flow-step"><span class="work-flow-no">02</span><h3 data-en="Check and estimate">状態確認・お見積り</h3><p data-en="We explain the condition of your roof, the work needed, and the cost.">屋根の状態を確認し、必要な工事と費用をご説明します。</p></div>
+      <div class="work-flow-step"><span class="work-flow-no">03</span><h3 data-en="Work after agreement">ご納得後に施工</h3><p data-en="We begin work after you are comfortable with the plan.">内容にご納得いただいてから、工事を進めます。</p></div>
     </div>
   </div>
 </section>
