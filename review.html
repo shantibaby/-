@@ -262,6 +262,13 @@ section{position:relative}
   text-shadow:0 4px 30px rgba(0,0,0,.55);margin-bottom:22px;color:#fff;
 }
 .hero h1 .accent{color:var(--sora)}
+.hero-line-one{display:inline-block;white-space:nowrap}
+h1 .accent,h2 .sora{font-weight:800}
+.accent-letter{display:inline-block;transform-origin:center bottom}
+@keyframes accentBeat{0%,100%{transform:scale(1)}42%{transform:scale(1.3)}}
+@media(prefers-reduced-motion:no-preference){
+ .hero-text-beat h1 .accent-letter,h2.accent-beat .accent-letter{animation:accentBeat .46s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--letter-index) * .105s)}
+}
 .hero .lead{font-size:clamp(.95rem,1.7vw,1.12rem);color:rgba(255,255,255,.9);margin-bottom:36px;font-weight:500}
 .hero-ctas{display:flex;flex-direction:row;gap:16px;flex-wrap:wrap}
 /* ヒーローボタン Organimo風リデザイン */
@@ -600,9 +607,9 @@ body::before{display:none!important}
   background:linear-gradient(145deg,rgba(235,244,244,.14),rgba(21,35,40,.33));border:1px solid rgba(255,255,255,.22);
   -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 18px 48px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.2)}
 .voice::before{content:"\201C";position:absolute;top:16px;right:24px;font-family:Georgia,serif;font-size:5rem;color:rgba(255,255,255,.12);line-height:1}
-.voice .stars{color:#dbb980;letter-spacing:4px;margin-bottom:22px;font-size:.7rem}
-.voice p{font-size:.94rem;line-height:2;color:rgba(255,255,255,.9);margin-bottom:28px;position:relative;z-index:1}
-.voice .who{display:flex;align-items:center;gap:15px;margin-top:auto;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
+.voice .stars{order:1;color:#dbb980;letter-spacing:4px;margin-bottom:16px;font-size:.8rem}
+.voice p{order:2;font-size:.94rem;line-height:2;color:rgba(255,255,255,.9);margin-bottom:0;position:relative;z-index:1}
+.voice .who{order:0;display:flex;align-items:center;gap:15px;margin-bottom:12px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.15)}
 .voice .ava{width:72px;height:72px;border-radius:50%;color:#365463;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:clip;
   border:1px solid rgba(255,255,255,.65);box-shadow:0 7px 20px rgba(0,0,0,.14),inset 0 1px 1px rgba(255,255,255,.65)}
 .voice .ava svg{width:100%;height:100%;display:block}
@@ -611,6 +618,7 @@ body::before{display:none!important}
 .ava-3{background:linear-gradient(145deg,#f1f6ed,#cbdcc8);color:#405b4c!important}
 .voice .who .nm{font-size:.86rem;font-weight:700;color:#fff}
 .voice .who .at{font-size:.74rem;color:var(--muted-2)}
+.hero h1,.hero .lead,.sec-title,.sec-lead,.svc-card h3,.svc-card p,.voice p,.voice .who .nm{text-shadow:0 1px 3px rgba(0,0,0,.55)}
 
 /* ===== CTA / フォーム（左コピー・右フォーム） ===== */
 .cta{position:relative;overflow:hidden}
@@ -961,7 +969,6 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 .services.svc-swipe .svc-list{flex-direction:row;gap:18px}
 .services.svc-swipe .svc-card{flex:0 0 92%;scroll-snap-align:start;opacity:1!important;transform:none!important}
 .svc-scroll-label{display:none}
-.svc-image-note{margin-top:10px;color:var(--muted-2);font-size:.75rem;line-height:1.5;text-align:right}
 .services.svc-horizontal{padding-block:0!important}
 .services.svc-horizontal .svc-split{position:sticky;top:0;height:100svh!important;align-items:center;overflow:hidden!important;padding-block:clamp(12px,2svh,24px)}
 .services.svc-horizontal .svc-intro{position:static!important;align-self:center!important}
@@ -978,13 +985,13 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .services.svc-horizontal .svc-intro .sec-head{margin-bottom:0}
  .services.svc-horizontal .svc-intro .sec-title{font-size:1.35rem;line-height:1.5}
  .services.svc-horizontal .svc-intro .sec-lead{font-size:.72rem;line-height:1.7;margin-top:8px}
- .services.svc-horizontal .svc-cta-mini{display:none}
- .services.svc-horizontal .svc-window{position:sticky;top:64px;width:min(100%,310px);height:calc(100svh - 64px);padding-block:12px;display:flex;flex-direction:column;justify-content:center}
- .services.svc-horizontal .svc-photo{height:clamp(160px,21svh,190px)}
+ .services .svc-cta-mini{display:none}
+ .services.svc-horizontal .svc-window{position:sticky;top:64px;width:min(100%,350px);height:calc(100svh - 64px);padding-block:8px;display:flex;flex-direction:column;justify-content:center}
+ .services.svc-horizontal .svc-photo{height:clamp(100px,18svh,150px)}
  .services.svc-horizontal .svc-card{border-radius:18px}
- .services.svc-horizontal .svc-content{padding:18px}
- .services.svc-horizontal .svc-card h3{font-size:1.05rem;margin:6px 0 10px}
- .services.svc-horizontal .svc-card p{font-size:.77rem;line-height:1.8;margin-bottom:12px}
+ .services.svc-horizontal .svc-content{padding:14px 16px 16px}
+ .services.svc-horizontal .svc-card h3{font-size:1.05rem;margin:4px 0 8px}
+ .services.svc-horizontal .svc-card p{font-size:.77rem;line-height:1.55;margin-bottom:10px}
 }
 @media(max-width:560px){
  .stats-grid>.stat:nth-child(1){order:1}
@@ -1006,11 +1013,18 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .services.svc-horizontal .svc-intro .sec-title{font-size:1.55rem}
  .services.svc-horizontal .svc-intro .sec-lead{font-size:1rem;line-height:1.75}
  .services.svc-horizontal .svc-card h3{font-size:1.18rem}
- .services.svc-horizontal .svc-card p{font-size:1rem;line-height:1.7}
+ .services.svc-horizontal .svc-card p{font-size:1rem;line-height:1.55}
  .services.svc-horizontal .svc-scroll-label{font-size:.77rem}
 }
+@media(max-width:560px) and (max-height:620px){
+ .services.svc-horizontal .svc-window{height:calc(100svh - 126px)}
+ .services.svc-horizontal .svc-photo{height:80px}
+ .services.svc-horizontal .svc-content{padding:12px 14px}
+ .services.svc-horizontal .svc-badge,.services.svc-horizontal .svc-scroll-label{display:none}
+ .services.svc-horizontal .svc-card p{line-height:1.42;letter-spacing:-.02em}
+}
 @media(max-width:560px){
- .hero h1{font-size:1.55rem}
+ .hero h1{font-size:clamp(1.25rem,6vw,1.48rem)}
  .hero .lead{font-size:1rem}
  .sec-title{font-size:1.82rem}
  .svc-no{font-size:.82rem}
@@ -1068,7 +1082,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   </div>
   <div class="hero-card">
     <span class="hero-eyebrow en">Miyazaki Citywide Roofing</span>
-    <h1 data-en="From roof tiles to leak repair —<br class='h1-br'>leave <span class='accent'>everything about your roof</span> to us">瓦から雨漏り修理まで、<br class="h1-br"><span class="accent">屋根のこと</span>なら全てお任せください</h1>
+    <h1 data-en="From roof tiles to leak repair —<br class='h1-br'>leave <span class='accent'>everything about your roof</span> to us"><span class="hero-line-one">瓦から雨漏り修理まで、</span><br class="h1-br"><span class="accent">屋根のこと</span>なら全てお任せください</h1>
     <p class="lead" data-en="Serving all of Miyazaki City, with 2,000+ projects completed. A 35-year master craftsman's skill and a 10-year warranty protect your family's roof.">宮崎市内全域に対応・施工2,000件以上。職人歴35年の確かな技術と10年保証で、あなたの家の屋根を守ります。</p>
     <div class="hero-ctas">
       <a href="#contact" class="btn-primary-wrap">
@@ -1230,7 +1244,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         </div>
       </article>
 
-    </div></div><div class="svc-scroll-label"><span class="svc-current">01 / 04</span><span data-en="SCROLL TO EXPLORE →">スクロールして、次のサービスへ →</span></div><p class="svc-image-note" data-en="Service visuals are AI-generated illustrations, not project photos.">掲載写真はAIで作成したイメージです。施工事例ではありません。</p></div>
+    </div></div><div class="svc-scroll-label"><span class="svc-current">01 / 04</span><span data-en="SCROLL TO EXPLORE →">スクロールして、次のサービスへ →</span></div></div>
   </div>
 </section>
 
@@ -1664,6 +1678,33 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   }
 
   /* ---- 言語切替（JP / EN） ---- */
+  var accentObserver=!reduceMotion && 'IntersectionObserver' in window?new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.classList.add('accent-beat');accentObserver.unobserve(entry.target);}
+    });
+  },{threshold:.55}):null;
+  var decorateAccentText=function(){
+    document.querySelectorAll('.hero h1 .accent,h2 .sora').forEach(function(el){
+      if(el.querySelector('.accent-letter'))return;
+      var value=el.textContent;
+      el.textContent='';
+      Array.from(value).forEach(function(letter,index){
+        var span=document.createElement('span');
+        span.className='accent-letter';
+        span.style.setProperty('--letter-index',index);
+        span.textContent=letter;
+        el.appendChild(span);
+      });
+    });
+    if(accentObserver){
+      document.querySelectorAll('h2 .sora').forEach(function(el){
+        var heading=el.closest('h2');
+        heading.classList.remove('accent-beat');
+        accentObserver.observe(heading);
+      });
+    }
+  };
+  decorateAccentText();
   var langToggle=document.getElementById('langToggle');
   if(langToggle){
     var isEN=false;
@@ -1689,6 +1730,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       document.documentElement.setAttribute('lang',en?'en':'ja');
       langToggle.textContent=en?'日本語':'EN';
       isEN=en;
+      decorateAccentText();
       requestAnimationFrame(function(){
         if(window.ScrollTrigger){ScrollTrigger.refresh();}
         if(lenis){lenis.resize();}
@@ -1724,8 +1766,9 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   if(canAnim && heroCard){
     var introTl=gsap.timeline({delay:4});
     introTl.to(heroCard,{opacity:1,y:0,duration:1,ease:'power3.out'})
-           .from(heroCard.children,{opacity:0,y:20,duration:.65,stagger:.12,ease:'power3.out'},0.2);
-  }else if(heroCard){heroCard.style.opacity=1;}
+           .from(heroCard.children,{opacity:0,y:20,duration:.65,stagger:.12,ease:'power3.out'},0.2)
+           .call(function(){heroCard.classList.add('hero-text-beat');});
+  }else if(heroCard){heroCard.style.opacity=1;if(!reduceMotion)heroCard.classList.add('hero-text-beat');}
   // 背景動画の自動再生（ブロック時も無害）
   if(heroVideo){var pp=heroVideo.play&&heroVideo.play();if(pp&&pp.catch){pp.catch(function(){});}}
 
@@ -1860,8 +1903,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     // スクロール連動動画：スクロール量に合わせて再生位置(currentTime)を進める
     var scrollVideo=document.getElementById('scrollVideo');
     if(scrollVideo){
-      // 帯域節約：ヒーロー動画の読み込みを優先し、その後にスクロール動画を読み込む
-      // iOS等で確実にシークできるよう一度だけ再生→停止してプライム
+      // 初回スクロールで読み込みとシーク準備を開始し、表示直後の先走った再生を防ぐ
       var scrollPrimed=false;
       var primeScrollVideo=function(){
         if(scrollPrimed)return;scrollPrimed=true;
@@ -1869,13 +1911,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         var prime=scrollVideo.play();
         if(prime&&prime.then){prime.then(function(){scrollVideo.pause();scrollVideo.currentTime=0;}).catch(function(){});}
       };
-      var hv=document.getElementById('heroVideo');
-      if(hv && hv.readyState<4){
-        hv.addEventListener('canplaythrough',primeScrollVideo,{once:true});
-        setTimeout(primeScrollVideo,3500); // フォールバック
-      }else{
-        primeScrollVideo();
-      }
+      window.addEventListener('scroll',primeScrollVideo,{once:true,passive:true});
       // ページ全体のスクロールに同期。フッターの最後で再生が終わる
       ScrollTrigger.create({
         trigger:document.body,start:'top top',endTrigger:'footer',end:'bottom bottom',scrub:true,
@@ -1937,7 +1973,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     var serviceQueue=function(){if(!serviceFrame)serviceFrame=requestAnimationFrame(servicePaint);};
     var serviceLayout=function(){
       var mobile=window.innerWidth<=880;
-      var active=!reduceMotion && (!mobile || window.innerHeight>=780);
+      var active=!reduceMotion;
       serviceSection.classList.toggle('svc-horizontal',active);
       serviceSection.classList.toggle('svc-swipe',!reduceMotion && !active);
       serviceTrack.style.removeProperty('transform');
