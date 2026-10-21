@@ -545,71 +545,18 @@ body::before{display:none!important}
 
 /* ===== 信頼 ===== */
 .trust>.wrap{padding-bottom:clamp(48px,7vw,90px)}
-/* メーカー：独立したステージを固定し、3社を横へ送る */
-.cert{--maker-width:min(72vw,860px);--maker-gap:32px;position:relative}
-.cert-stage{position:relative;padding:100px 0 64px;background:transparent}
-.cert-head,.cert-footer{width:min(100% - 64px,1108px);margin-inline:auto}
-.cert-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:32px}
-.cert-head .sec-kicker{margin-bottom:8px;font-size:.66rem}
-.cert-head h3{font-family:var(--jp);font-weight:600;font-size:clamp(1.7rem,3.5vw,2.8rem);line-height:1.4}
-.cert-head p{max-width:320px;font-size:.83rem;line-height:1.9;color:var(--muted-2)}
-.cert-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;width:min(100% - 64px,1108px);margin:auto}
-.cert-logo{position:relative;isolation:isolate;min-width:0;min-height:300px;padding:28px;
-  display:flex;flex-direction:column;justify-content:space-between;overflow:clip;
-  border-radius:20px;border:1px solid var(--glass-bd);background:var(--glass);
-  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
-  box-shadow:0 18px 42px rgba(0,0,0,.2)}
-.cert-topline{display:flex;justify-content:space-between;align-items:center;font:500 .64rem var(--en);letter-spacing:.2em;color:rgba(255,255,255,.65)}
-.cert-index{font-size:.9rem;letter-spacing:.08em;color:var(--sora)}
-.cert-logo .cert-img{display:block;width:min(82%,360px);height:112px;object-fit:contain;
-  background:#fff;border-radius:4px;padding:30px 40px;margin:30px auto;box-shadow:0 12px 32px rgba(0,0,0,.12)}
-.cert-caption{display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
-.cert-logo .nm{font-family:var(--jp);font-weight:600;font-size:clamp(1.35rem,3.6vw,2.6rem);color:#fff;line-height:1.4}
-.cert-logo .ty{font-size:.68rem;color:var(--sora);letter-spacing:.13em;margin-top:6px}
-.cert-mark{width:38px;height:38px;border:1px solid rgba(255,255,255,.3);border-radius:50%;
-  display:grid;place-items:center;color:var(--sora);font-size:1.1rem}
-.cert-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:26px}
-.cert-controls{display:none;align-items:center;gap:10px}
-.cert-step{appearance:none;display:flex;align-items:center;justify-content:center;width:38px;height:38px;
-  border:1px solid rgba(255,255,255,.22);border-radius:50%;background:transparent;color:var(--muted-2);
-  font:500 .68rem var(--en);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
-.cert-step.is-active{background:var(--orange);border-color:var(--orange);color:#fff}
-.cert-step:focus-visible,.cert-skip:focus-visible{outline:2px solid var(--sora);outline-offset:5px}
-.cert-progress{width:clamp(60px,10vw,150px);height:2px;background:rgba(255,255,255,.18);margin-left:12px}
-.cert-progress span{display:block;width:100%;height:100%;background:var(--sora);transform:scaleX(0);transform-origin:left}
-.cert-scroll-hint{display:none;font-size:.7rem;letter-spacing:.1em;color:var(--muted-2)}
-.cert-skip{font-size:.73rem;color:var(--muted);white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.3);padding:8px 0}
-.cert-skip:hover{color:#fff;border-color:var(--sora)}
-.cert.has-horizontal .cert-stage{height:100svh;min-height:620px;padding:110px 0 40px;display:flex;flex-direction:column;justify-content:center}
-.cert.has-horizontal .cert-viewport{overflow:clip;width:100%}
-.cert.has-horizontal .cert-track{display:flex;gap:var(--maker-gap);width:max-content;margin:0;
-  padding-inline:calc((100vw - var(--maker-width))/2);will-change:transform}
-.cert.has-horizontal .cert-logo{flex:0 0 var(--maker-width);width:var(--maker-width);height:clamp(270px,43svh,440px);min-height:0;padding:clamp(24px,3vw,42px)}
-.cert.has-horizontal .cert-img{height:clamp(90px,14svh,130px);margin:16px auto}
-.cert.has-horizontal .cert-controls{display:flex}
-.cert.has-horizontal .cert-scroll-hint{display:block}
-@media(max-width:880px){
-  .cert{--maker-width:84vw;--maker-gap:18px}
-  .cert-head,.cert-footer{width:calc(100% - 40px)}
-  .cert-head{display:block;margin-bottom:24px}
-  .cert-head p{max-width:none;margin-top:10px;font-size:.76rem}
-  .cert-track{grid-template-columns:1fr;width:min(100% - 40px,560px)}
-  .cert-stage{padding:72px 0 48px}
-  .cert.has-horizontal .cert-stage{padding:105px 0 100px}
-  .cert.has-horizontal .cert-logo{height:clamp(245px,37svh,360px)}
-  .cert-scroll-hint{display:none!important}
-  .cert-footer{gap:12px;margin-top:22px}
-  .cert-progress{width:44px;margin-left:2px}
-  .cert-step{width:32px;height:32px}
-  .cert-controls{gap:7px}
-  .cert-skip{font-size:.68rem}
-}
-@media(max-width:390px){
-  .cert-head h3{font-size:1.6rem}
-  .cert-head p{font-size:.7rem}
-  .cert.has-horizontal .cert-logo{padding:22px}
-  .cert-progress{display:none}
-}
+.cert{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(48px,7vw,80px)}
+.cert h3{font-family:var(--jp);font-weight:700;font-size:clamp(1.2rem,2.6vw,1.6rem);margin-bottom:8px;color:#fff}
+.cert p{color:var(--muted);font-size:.92rem;margin-bottom:30px}
+.cert-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}
+/* モバイルは認定代理店を縦1列に */
+@media(max-width:560px){.cert-logos{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto;gap:16px}}
+.cert-logo{border-radius:14px;padding:22px 20px;min-width:0;text-align:center;
+  background:var(--glass);border:1px solid var(--glass-bd);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.cert-logo .cert-img{display:block;width:100%;max-width:220px;height:60px;object-fit:contain;background:#fff;border-radius:10px;padding:15px 30px;margin:0 auto 14px;box-sizing:border-box}
+.cert-logo .nm{font-family:var(--jp);font-weight:700;font-size:1.05rem;color:#fff}
+.cert-logo .ty{font-size:.7rem;color:var(--sora);font-weight:600;letter-spacing:.1em;margin-top:4px}
 .guarantee{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(20px,3vw,40px);align-items:center;border-radius:24px;padding:clamp(30px,4vw,56px);margin-bottom:clamp(48px,7vw,80px);
   background:var(--glass);border:1px solid var(--glass-bd);position:relative;overflow:hidden;
   -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 12px 30px rgba(0,0,0,.26)}
@@ -1008,6 +955,48 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   background:rgba(15,17,23,.5);
 }
 .faq-a-inner{padding-bottom:24px;border-top:1px solid rgba(255,255,255,.07);padding-top:16px}
+
+/* サービスの横送り：外部ライブラリなしでも動作 */
+.svc-window{min-width:0}
+.services.svc-swipe .svc-window{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:16px}
+.services.svc-swipe .svc-list{flex-direction:row;gap:18px}
+.services.svc-swipe .svc-card{flex:0 0 92%;scroll-snap-align:start;opacity:1!important;transform:none!important}
+.svc-progress,.svc-scroll-label{display:none}
+.services.svc-horizontal{padding-block:0!important}
+.services.svc-horizontal .svc-split{position:sticky;top:0;height:100svh!important;align-items:center;overflow:hidden!important}
+.services.svc-horizontal .svc-intro{position:static!important;align-self:center!important}
+.services.svc-horizontal .svc-window{overflow:hidden;padding-block:16px}
+.services.svc-horizontal .svc-list{flex-direction:row;gap:24px;will-change:transform}
+.services.svc-horizontal .svc-card{flex:0 0 100%;width:100%;opacity:1!important;transform:none!important;max-height:calc(100svh - 160px);overflow-y:auto}
+.services.svc-horizontal .svc-photo{aspect-ratio:auto;height:clamp(160px,27svh,270px)}
+.services.svc-horizontal .svc-content{padding:24px}
+.services.svc-horizontal .svc-progress{display:block;height:2px;background:rgba(255,255,255,.2);margin-top:22px}
+.svc-progress span{display:block;height:100%;background:var(--sora);transform:scaleX(0);transform-origin:left}
+.services.svc-horizontal .svc-scroll-label{display:flex;justify-content:space-between;gap:10px;color:var(--muted-2);font-size:.65rem;letter-spacing:.08em;margin-top:12px}
+@media(max-width:880px){
+ .services.svc-horizontal .svc-split{display:flex;flex-direction:column;justify-content:center;gap:18px;padding-top:92px;padding-bottom:72px}
+ .services.svc-horizontal .svc-intro{width:100%}
+ .services.svc-horizontal .svc-intro .sec-head{margin-bottom:0}
+ .services.svc-horizontal .svc-intro .sec-title{font-size:1.35rem;line-height:1.5}
+ .services.svc-horizontal .svc-intro .sec-lead{font-size:.72rem;line-height:1.7;margin-top:8px}
+ .services.svc-horizontal .svc-cta-mini{display:none}
+ .services.svc-horizontal .svc-window{width:100%;padding-block:0}
+ .services.svc-horizontal .svc-photo{height:clamp(110px,17svh,160px)}
+ .services.svc-horizontal .svc-card{max-height:calc(100svh - 320px);border-radius:18px}
+ .services.svc-horizontal .svc-content{padding:18px}
+ .services.svc-horizontal .svc-card h3{font-size:1.05rem;margin:6px 0 10px}
+ .services.svc-horizontal .svc-card p{font-size:.77rem;line-height:1.8;margin-bottom:12px}
+ .services.svc-horizontal .svc-tags{gap:5px}
+ .services.svc-horizontal .svc-progress{margin-top:14px}
+}
+@media(max-width:560px){
+ .stats-grid>.stat:nth-child(1){order:1}
+ .stats-grid>.stat:nth-child(4){order:2}
+ .stats-grid>.stat:nth-child(2){order:3}
+ .stats-grid>.stat:nth-child(3){order:4}
+ .stats-grid>.stat:nth-child(5){order:5}
+}
+
 </style>
 </head>
 <body>
@@ -1174,7 +1163,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         <a href="#contact" class="btn btn-primary" data-en="Free Consultation">無料で相談する</a>
       </div>
     </div>
-    <div class="svc-list">
+    <div class="svc-window"><div class="svc-list">
 
       <article class="svc-card reveal">
         <figure class="svc-photo svc-photo--house"><img src="assets/images/work8.jpg" alt="瓦屋根の和風住宅の外観" width="1000" height="1000" loading="lazy" decoding="async"><figcaption data-en="A home with traditional roof tiles">瓦屋根の住まい</figcaption></figure>
@@ -1220,7 +1209,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         </div>
       </article>
 
-    </div>
+    </div><div class="svc-progress" aria-hidden="true"><span></span></div><div class="svc-scroll-label"><span class="svc-current">01 / 04</span><span data-en="SCROLL TO EXPLORE →">スクロールして、次のサービスへ →</span></div></div>
   </div>
 </section>
 
@@ -1342,40 +1331,14 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 
   </div>
 
-  <div class="cert" id="makers" role="region" aria-labelledby="makersTitle">
-    <div class="cert-stage">
-      <div class="cert-head">
-        <div><span class="sec-kicker">Manufacturers</span><h3 id="makersTitle" data-en="Authorized Manufacturer Dealers">メーカー認定代理店</h3></div>
-        <p data-en="Proof of solid quality — we hold official certification from top manufacturers.">確かな品質の証。一流メーカーの正規認定を受けています。</p>
-      </div>
-      <div class="cert-viewport">
-        <div class="cert-track">
-          <article class="cert-logo">
-            <div class="cert-topline" aria-hidden="true"><span>Authorized Dealer</span><span class="cert-index">01 / 03</span></div>
-            <img class="cert-img" src="assets/images/maker-kmew.png" alt="KMEW（ケイミュー）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'">
-            <div class="cert-caption"><div><h4 class="nm">KMEW</h4><div class="ty" data-en="Authorized Dealer">認定代理店</div></div><span class="cert-mark" aria-hidden="true">✓</span></div>
-          </article>
-          <article class="cert-logo">
-            <div class="cert-topline" aria-hidden="true"><span>Authorized Dealer</span><span class="cert-index">02 / 03</span></div>
-            <img class="cert-img" src="assets/images/maker-sanshu.png" alt="鶴弥（三州瓦）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'">
-            <div class="cert-caption"><div><h4 class="nm" data-en="Tsuruya (Sanshu Tile)">鶴弥（三州瓦）</h4><div class="ty" data-en="Authorized Dealer">認定代理店</div></div><span class="cert-mark" aria-hidden="true">✓</span></div>
-          </article>
-          <article class="cert-logo">
-            <div class="cert-topline" aria-hidden="true"><span>Authorized Dealer</span><span class="cert-index">03 / 03</span></div>
-            <img class="cert-img" src="assets/images/maker-awaji.png" alt="淡路瓦 認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'">
-            <div class="cert-caption"><div><h4 class="nm" data-en="Awaji Tile">淡路瓦</h4><div class="ty" data-en="Authorized Dealer">認定代理店</div></div><span class="cert-mark" aria-hidden="true">✓</span></div>
-          </article>
-        </div>
-      </div>
-      <div class="cert-footer">
-        <div class="cert-controls" role="group" aria-label="Manufacturers">
-          <button class="cert-step is-active" type="button" aria-label="KMEW" aria-pressed="true">01</button>
-          <button class="cert-step" type="button" aria-label="鶴弥 / Tsuruya" aria-pressed="false">02</button>
-          <button class="cert-step" type="button" aria-label="淡路瓦 / Awaji Tile" aria-pressed="false">03</button>
-          <div class="cert-progress" aria-hidden="true"><span></span></div>
-        </div>
-        <span class="cert-scroll-hint" data-en="SCROLL TO EXPLORE →">スクロールして、次のメーカーへ →</span>
-        <a class="cert-skip" href="#faq" data-en="Continue to FAQ ↓">よくあるご質問へ ↓</a>
+  <div class="wrap">
+    <div class="cert reveal" id="makers" style="margin-top:80px">
+      <h3 data-en="Authorized Manufacturer Dealer">メーカー認定代理店</h3>
+      <p data-en="Proof of solid quality — we hold official certification from top manufacturers.">確かな品質の証。一流メーカーの正規認定を受けています。</p>
+      <div class="cert-logos">
+        <div class="cert-logo"><img class="cert-img" src="assets/images/maker-kmew.png" alt="KMEW（ケイミュー）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm">KMEW</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
+        <div class="cert-logo"><img class="cert-img" src="assets/images/maker-sanshu.png" alt="鶴弥（三州瓦）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Tsuruya (Sanshu Tile)">鶴弥（三州瓦）</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
+        <div class="cert-logo"><img class="cert-img" src="assets/images/maker-awaji.png" alt="淡路瓦 認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Awaji Tile">淡路瓦</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
       </div>
     </div>
   </div>
@@ -1865,22 +1828,6 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       );
     }
 
-    // サービスカード：ダイナミック登場（右から飛び込み＋回転＋スケール）
-    var svcCards = gsap.utils.toArray('.svc-card');
-    gsap.fromTo(svcCards,
-      {x:200, opacity:0, rotation:8, scale:0.8},
-      {x:0, opacity:1, rotation:0, scale:1,
-       duration:0.9, ease:'back.out(1.7)',
-       stagger:0.15,
-       scrollTrigger:{trigger:'.svc-list', start:'top 80%'}
-      }
-    );
-    // スクロール追従パララックス（維持）
-    svcCards.forEach(function(card){
-      gsap.fromTo(card,{xPercent:4},{xPercent:0,ease:'none',
-        scrollTrigger:{trigger:card,start:'top bottom',end:'top center',scrub:true}});
-    });
-
     // 背景動画：スクロールでゆっくり縦パララックス（モバイルは縦を全部見せるため無効化）
     if(window.innerWidth>768){
       gsap.to('.hero-bg video',{yPercent:14,ease:'none',
@@ -1949,67 +1896,41 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     }
   }
 
-  /* ---- メーカー：縦スクロール → 横送り → FAQへ自然に解除 ---- */
-  var makers=document.getElementById('makers');
-  if(makers && window.gsap && window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    var makerMedia=gsap.matchMedia();
-    // 高さが足りない画面・動きを抑える設定では、全社を通常配置で表示。
-    makerMedia.add('(prefers-reduced-motion: no-preference) and (min-width: 881px) and (min-height: 620px), (prefers-reduced-motion: no-preference) and (max-width: 880px) and (min-height: 720px)',function(){
-      var stage=makers.querySelector('.cert-stage');
-      var viewport=makers.querySelector('.cert-viewport');
-      var track=makers.querySelector('.cert-track');
-      var steps=[].slice.call(makers.querySelectorAll('.cert-step'));
-      var progress=makers.querySelector('.cert-progress span');
-      makers.classList.add('has-horizontal');
-      var distance=function(){return Math.max(0,track.scrollWidth-viewport.clientWidth);};
-      var current=-1;
-      var paint=function(p){
-        progress.style.transform='scaleX('+p+')';
-        var next=Math.round(p*(steps.length-1));
-        if(next===current)return;
-        current=next;
-        steps.forEach(function(button,i){
-          button.classList.toggle('is-active',i===current);
-          button.setAttribute('aria-pressed',i===current?'true':'false');
-        });
-      };
-      var movement={progress:0};
-      var timeline=gsap.timeline({
-        scrollTrigger:{
-          trigger:makers,start:'top top',
-          end:function(){return '+='+Math.max(distance(),window.innerHeight*1.6);},
-          pin:stage,pinSpacing:true,scrub:.45,anticipatePin:1,
-          invalidateOnRefresh:true,refreshPriority:1
-        },
-        onUpdate:function(){paint(movement.progress);}
-      });
-      // 前後に短い静止区間を設け、1社目と3社目も読み切れるようにする。
-      timeline.to(track,{x:function(){return -distance();},duration:1,ease:'none'},.08)
-        .to(movement,{progress:1,duration:1,ease:'none'},.08)
-        .to({}, {duration:.08});
-      var handlers=steps.map(function(button,i){
-        var handler=function(){
-          var trigger=timeline.scrollTrigger;
-          var fraction=(.08+i/(steps.length-1))/timeline.duration();
-          var target=trigger.start+(trigger.end-trigger.start)*fraction;
-          if(lenis){lenis.scrollTo(target,{duration:.7});}
-          else{window.scrollTo({top:target,behavior:'smooth'});}
-        };
-        button.addEventListener('click',handler);
-        return handler;
-      });
-      paint(0);
-      requestAnimationFrame(function(){ScrollTrigger.refresh();if(lenis){lenis.resize();}});
-      return function(){
-        steps.forEach(function(button,i){button.removeEventListener('click',handlers[i]);});
-        makers.classList.remove('has-horizontal');
-        progress.style.removeProperty('transform');
-      };
-    });
-    if(document.fonts && document.fonts.ready){
-      document.fonts.ready.then(function(){ScrollTrigger.refresh();if(lenis){lenis.resize();}});
-    }
+  /* ---- サービス：スクロールで4つの写真カードを横送り ---- */
+  var serviceSection=document.getElementById('services');
+  if(serviceSection){
+    var serviceStage=serviceSection.querySelector('.svc-split');
+    var serviceWindow=serviceSection.querySelector('.svc-window');
+    var serviceTrack=serviceSection.querySelector('.svc-list');
+    var serviceBar=serviceSection.querySelector('.svc-progress span');
+    var serviceCurrent=serviceSection.querySelector('.svc-current');
+    var serviceDistance=0,serviceFrame=0;
+    var servicePaint=function(){
+      serviceFrame=0;
+      if(!serviceSection.classList.contains('svc-horizontal'))return;
+      var progress=Math.max(0,Math.min(1,-serviceSection.getBoundingClientRect().top/Math.max(1,serviceDistance)));
+      serviceTrack.style.transform='translate3d('+(-serviceDistance*progress)+'px,0,0)';
+      serviceBar.style.transform='scaleX('+progress+')';
+      serviceCurrent.textContent='0'+(Math.round(progress*3)+1)+' / 04';
+    };
+    var serviceQueue=function(){if(!serviceFrame)serviceFrame=requestAnimationFrame(servicePaint);};
+    var serviceLayout=function(){
+      var active=!reduceMotion && window.innerHeight>=720;
+      serviceSection.classList.toggle('svc-horizontal',active);
+      serviceSection.classList.toggle('svc-swipe',!reduceMotion && !active);
+      serviceTrack.style.removeProperty('transform');
+      serviceSection.style.removeProperty('height');
+      if(active){
+        serviceDistance=Math.max(0,serviceTrack.scrollWidth-serviceWindow.clientWidth);
+        serviceSection.style.height=(window.innerHeight+serviceDistance)+'px';
+      }
+      serviceQueue();
+    };
+    window.addEventListener('scroll',serviceQueue,{passive:true});
+    window.addEventListener('resize',serviceLayout,{passive:true});
+    window.addEventListener('load',serviceLayout,{once:true});
+    serviceLayout();
+    if(document.fonts)document.fonts.ready.then(serviceLayout);
   }
 
   /* ---- カウントアップ（スロットマシン演出・強化版）---- */
