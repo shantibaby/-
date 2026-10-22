@@ -1780,7 +1780,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   if(canAnim && heroCard){gsap.set(heroCard,{opacity:0,y:40});}
   document.documentElement.classList.remove('js-intro');
   if(canAnim && heroCard){
-    var introTl=gsap.timeline({delay:4});
+    var introTl=gsap.timeline({delay:1.5});
     introTl.to(heroCard,{opacity:1,y:0,duration:1,ease:'power3.out'})
            .from(heroCard.children,{opacity:0,y:20,duration:.65,stagger:.12,ease:'power3.out'},0.2)
            .call(function(){heroCard.classList.add('hero-text-beat');});
