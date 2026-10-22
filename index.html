@@ -988,6 +988,16 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 .services.svc-horizontal .svc-content{padding:24px}
 .services.svc-horizontal .svc-tags{display:none}
 .services.svc-horizontal .svc-scroll-label{display:flex;justify-content:space-between;gap:10px;color:var(--muted-2);font-size:.65rem;letter-spacing:.08em;margin-top:14px}
+/* PC: カードの囲みを外し、ページ本来の縦スクロールで各サービスを見せる */
+@media(min-width:881px){
+ .services .svc-intro{position:static!important;top:auto!important}
+ .services .svc-list{gap:clamp(48px,6vw,88px)}
+ .services .svc-card{overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;transition:none}
+ .services .svc-card:hover{transform:none;border-color:transparent;box-shadow:none}
+ .services .svc-photo{border:0;border-radius:18px}
+ .services .svc-content{padding:20px 0 0}
+ .services .svc-scroll-label{display:none}
+}
 @media(max-width:880px){
  .services.svc-horizontal .svc-split{position:relative;top:auto;height:100%!important;display:block;padding-top:92px;padding-bottom:0;overflow:visible!important}
  .services.svc-horizontal .svc-intro{width:100%;margin-bottom:24px}
@@ -1887,7 +1897,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 
     // 汎用フェードアップ
     gsap.utils.toArray('.reveal').forEach(function(el){
-      if(el.classList.contains('svc-card'))return; // サービスは横流れで別処理
+      if(el.classList.contains('svc-card') && window.innerWidth<=880)return; // スマホのサービスは横流れで別処理
       if(el.classList.contains('stat'))return;     // 実績数字は奥行き飛び出しで別処理
       gsap.fromTo(el,{y:46,opacity:0},{y:0,opacity:1,duration:.9,ease:'power3.out',
         scrollTrigger:{trigger:el,start:'top 86%'}});
@@ -2000,7 +2010,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     var serviceQueue=function(){if(!serviceFrame)serviceFrame=requestAnimationFrame(servicePaint);};
     var serviceLayout=function(){
       var mobile=window.innerWidth<=880;
-      var active=!reduceMotion;
+      var active=!reduceMotion && mobile;
       serviceSection.classList.toggle('svc-horizontal',active);
       serviceSection.classList.toggle('svc-swipe',!reduceMotion && !active);
       serviceTrack.style.removeProperty('transform');
