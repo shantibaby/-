@@ -995,7 +995,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .services.svc-horizontal .svc-intro .sec-title{font-size:1.35rem;line-height:1.5}
  .services.svc-horizontal .svc-intro .sec-lead{font-size:.72rem;line-height:1.7;margin-top:8px}
  .services .svc-cta-mini{display:none}
- .services.svc-horizontal .svc-window{position:sticky;top:64px;width:min(100%,350px);height:calc(100svh - 64px);padding-block:8px;display:flex;flex-direction:column;justify-content:center}
+ .services.svc-horizontal .svc-window{position:sticky;top:64px;width:min(100%,350px);height:calc(100svh - 64px);padding-top:28px;padding-bottom:8px;display:flex;flex-direction:column;justify-content:center}
  .services.svc-horizontal .svc-photo{height:clamp(100px,18svh,150px)}
  .services.svc-horizontal .svc-card{border-radius:18px}
  .services.svc-horizontal .svc-content{padding:14px 16px 16px}
@@ -1982,14 +1982,18 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     var serviceViewport=serviceSection.querySelector('.svc-viewport');
     var serviceTrack=serviceSection.querySelector('.svc-list');
     var serviceCurrent=serviceSection.querySelector('.svc-current');
-    var serviceDistance=0,serviceStartOffset=0,serviceFrame=0;
+    var serviceDistance=0,serviceStartOffset=0,serviceFrame=0,serviceX=null;
     var servicePaint=function(){
       serviceFrame=0;
       if(!serviceSection.classList.contains('svc-horizontal'))return;
       var progress=Math.max(0,Math.min(1,(-serviceSection.getBoundingClientRect().top-serviceStartOffset)/Math.max(1,serviceDistance)));
       var index=Math.min(3,Math.max(0,Math.round(progress*3)));
-      serviceTrack.style.transform='translate3d('+(-serviceDistance*progress)+'px,0,0)';
+      var targetX=-serviceDistance*progress;
+      serviceX=serviceX===null?targetX:serviceX+(targetX-serviceX)*0.26;
+      if(Math.abs(targetX-serviceX)<0.5)serviceX=targetX;
+      serviceTrack.style.transform='translate3d('+serviceX+'px,0,0)';
       serviceCurrent.textContent='0'+(index+1)+' / 04';
+      if(serviceX!==targetX)serviceQueue();
     };
     var serviceQueue=function(){if(!serviceFrame)serviceFrame=requestAnimationFrame(servicePaint);};
     var serviceLayout=function(){
