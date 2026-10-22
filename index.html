@@ -2012,7 +2012,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       var mobile=window.innerWidth<=880;
       var active=!reduceMotion && mobile;
       serviceSection.classList.toggle('svc-horizontal',active);
-      serviceSection.classList.toggle('svc-swipe',!reduceMotion && !active);
+      serviceSection.classList.remove('svc-swipe');
       serviceTrack.style.removeProperty('transform');
       serviceSection.style.removeProperty('height');
       if(active){
