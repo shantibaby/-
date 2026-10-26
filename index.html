@@ -610,6 +610,8 @@ body::before{display:none!important}
 .seal-circle .t{font-family:var(--jp);font-weight:700;font-size:1rem;margin-top:2px;color:#fff}
 .guarantee h3{font-family:var(--jp);font-weight:700;font-size:clamp(1.3rem,3vw,1.9rem);margin-bottom:16px;line-height:1.5;color:#fff;position:relative}
 .guarantee p{color:var(--muted);font-size:.95rem;position:relative}
+/* お客様の声：data-show="false" の間は非表示（HTML側の1か所を "true" にすると再表示） */
+.voices-block[data-show="false"]{display:none!important}
 .voices{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,26px)}
 .voice{border-radius:26px;padding:30px clamp(22px,2.5vw,34px);position:relative;display:flex;flex-direction:column;overflow:hidden;
   background:linear-gradient(145deg,rgba(235,244,244,.14),rgba(21,35,40,.33));border:1px solid rgba(255,255,255,.22);
@@ -690,6 +692,171 @@ body::before{display:none!important}
 .form-success .chk{width:64px;height:64px;border-radius:50%;background:rgba(245,138,75,.18);color:var(--sora);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 18px;box-shadow:0 0 28px rgba(245,138,75,.4)}
 .form-success h4{font-family:var(--jp);font-weight:700;font-size:1.25rem;margin-bottom:10px;color:#fff}
 .form-success p{font-size:.9rem;color:var(--muted)}
+/* フォーム：送信中・送信失敗・ボット対策 */
+.form-submit[disabled]{opacity:.7;cursor:wait;transform:none!important}
+.form-error{display:none;margin-top:12px;padding:12px 14px;border-radius:12px;font-size:.84rem;line-height:1.7;color:#ffd6cc;background:rgba(255,90,60,.12);border:1px solid rgba(255,120,90,.45)}
+.form-error.show{display:block}
+.form-error a{color:#fff;font-weight:700;text-decoration:underline}
+.hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+
+/* ===== 広告：無料屋根診断 実施中 ===== */
+.campaign .wrap{padding-top:clamp(28px,5vw,64px);padding-bottom:clamp(28px,5vw,64px)}
+.cp-panel{position:relative;isolation:isolate;overflow:hidden;padding:clamp(28px,5vw,60px);display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr);align-items:end;gap:clamp(24px,4vw,40px);
+  border:1px solid rgba(255,225,201,.42);border-radius:18px;background:linear-gradient(128deg,#4a2b22 0%,#2d1e1b 58%,#20191a 100%);box-shadow:0 25px 70px rgba(0,0,0,.22)}
+.cp-panel::before{content:"無料";position:absolute;z-index:-1;right:-.04em;top:-.3em;font-family:var(--jp);font-weight:700;font-size:clamp(190px,25vw,380px);line-height:1;color:rgba(255,229,207,.055);pointer-events:none}
+.cp-panel::after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,225,201,.16);border-radius:10px;pointer-events:none}
+.cp-main,.cp-actions{position:relative}
+.cp-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:30px;margin-bottom:20px;
+  background:rgba(255,107,0,.16);border:1px solid rgba(255,107,0,.6);color:#fff;font-size:.82rem;font-weight:800;letter-spacing:.08em}
+.cp-badge i{width:9px;height:9px;border-radius:50%;background:#FF6B00;flex-shrink:0;animation:cpPulse 1.8s infinite}
+@keyframes cpPulse{0%{box-shadow:0 0 0 0 rgba(255,107,0,.6)}70%{box-shadow:0 0 0 10px rgba(255,107,0,0)}100%{box-shadow:0 0 0 0 rgba(255,107,0,0)}}
+.cp-panel h2{font-family:var(--jp);font-weight:800;color:#fff;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.35;letter-spacing:.03em;text-shadow:0 2px 15px rgba(0,0,0,.38);word-break:auto-phrase;line-break:strict}
+.cp-panel h2 em{font-style:normal;color:#FF6B00}
+.cp-panel .lead{max-width:600px;margin-top:18px;color:rgba(255,255,255,.9);font-size:clamp(.98rem,1.5vw,1.1rem);line-height:1.8}
+.cp-offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px;max-width:560px}
+.cp-offer{border-radius:12px;padding:14px 10px;text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,225,201,.22)}
+.cp-offer .k{display:block;font-size:.78rem;font-weight:700;color:rgba(255,255,255,.75);margin-bottom:4px}
+.cp-offer .v{display:block;font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;color:#fff}
+.cp-offer .v small{font-family:var(--jp-sans);font-size:.5em;margin-left:2px}
+.cp-offer .v.jp{font-family:var(--jp-sans);font-size:clamp(.98rem,1.7vw,1.15rem);padding:.42em 0}
+.cp-note{margin-top:12px;font-size:.78rem;color:rgba(255,255,255,.62)}
+.cp-actions{display:grid;gap:12px;align-self:end}
+.cp-actions a{min-height:58px;padding:12px 16px;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;border-radius:10px;font-weight:800;font-size:1.04rem;text-decoration:none;color:#fff;transition:transform .2s,box-shadow .2s,background .2s}
+.cp-actions a:hover{transform:translateY(-2px)}
+.cp-apply{background:#FF6B00;border:1px solid #FF6B00;box-shadow:0 10px 26px rgba(255,107,0,.4)}
+.cp-apply:hover{box-shadow:0 14px 32px rgba(255,107,0,.55)}
+.cp-tel{flex-direction:column;gap:2px!important;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.7)}
+.cp-tel .lb{font-size:.76rem;font-weight:700;color:rgba(255,255,255,.78)}
+.cp-tel .num{font-family:var(--en);font-size:1.25rem;letter-spacing:.04em}
+.cp-line{background:#06C755;border:1px solid #06C755}
+.cp-line:hover{background:#05B04A}
+.cp-actions small{display:block;text-align:center;color:rgba(255,255,255,.7);font-size:.8rem}
+@media(max-width:880px){.cp-panel{grid-template-columns:1fr;align-items:start}.cp-offers{max-width:none}}
+@media(max-width:560px){
+  .cp-panel{padding:30px 20px 24px}
+  .cp-panel h2{font-size:clamp(1.8rem,8vw,2.3rem)}
+  .cp-offers{gap:8px}
+  .cp-offer{padding:12px 6px}
+  .cp-actions a{min-height:52px;font-size:.96rem}
+}
+@media(prefers-reduced-motion:reduce){.cp-badge i{animation:none}}
+
+/* ===== 安心宣言（訪問販売の点検商法とは違います） ===== */
+.promise{position:relative}
+.pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,24px)}
+.pr-card{position:relative;border-radius:18px;padding:28px 24px 26px;
+  background:var(--glass);border:1px solid var(--glass-bd);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  box-shadow:0 10px 24px rgba(0,0,0,.22),inset 0 1px 1px rgba(255,255,255,.1)}
+.pr-no{position:absolute;top:20px;right:22px;font-size:.72rem;font-weight:700;letter-spacing:.16em;color:rgba(255,255,255,.35)}
+.pr-ic{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--sora);margin-bottom:16px;
+  background:linear-gradient(150deg,rgba(135,206,235,.22),rgba(255,255,255,.04));border:1px solid var(--glass-bd);box-shadow:inset 0 1px 1px rgba(255,255,255,.2)}
+.pr-ic svg{width:24px;height:24px}
+.pr-card h3{font-family:var(--jp);font-weight:700;font-size:1.08rem;line-height:1.5;color:#fff;margin-bottom:10px;word-break:auto-phrase;line-break:strict}
+.pr-card p{font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.82)}
+.pr-caution{margin-top:clamp(28px,4vw,40px);display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);align-items:center;
+  border-radius:20px;padding:clamp(22px,3vw,32px) clamp(22px,3.4vw,40px);
+  background:rgba(227,160,8,.08);border:1px solid rgba(227,160,8,.4);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.pr-caution h4{display:flex;align-items:center;gap:8px;font-family:var(--jp);font-weight:700;font-size:1rem;color:#ffd97a;margin-bottom:12px}
+.pr-caution h4 svg{width:20px;height:20px;flex-shrink:0}
+.pr-caution ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.pr-caution li{position:relative;padding-left:18px;font-size:.88rem;line-height:1.7;color:rgba(255,255,255,.86)}
+.pr-caution li::before{content:"";position:absolute;left:2px;top:.72em;width:6px;height:6px;border-radius:50%;background:#ffd97a}
+.pr-help{border-radius:14px;padding:18px 20px;background:rgba(255,255,255,.06);border:1px solid var(--glass-bd)}
+.pr-help .lb{font-size:.8rem;color:var(--muted-2);margin-bottom:4px}
+.pr-help .tel{font-family:var(--en);font-weight:800;font-size:1.5rem;color:#fff;letter-spacing:.04em}
+.pr-help .tel small{font-family:var(--jp-sans);font-size:.78rem;font-weight:600;color:var(--muted);margin-left:6px;letter-spacing:0}
+.pr-help p{font-size:.8rem;line-height:1.7;color:var(--muted-2);margin-top:8px}
+
+/* ===== 無料診断の流れ ===== */
+.flow{position:relative}
+.fl-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:start}
+.fl-steps{list-style:none;position:relative;display:flex;flex-direction:column;gap:14px}
+.fl-steps::before{content:"";position:absolute;left:27px;top:28px;bottom:28px;width:2px;
+  background:linear-gradient(180deg,rgba(135,206,235,.65),rgba(135,206,235,.08))}
+.fl-step{position:relative;display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:center}
+.fl-num{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(14,14,18,.6);border:2px solid var(--sora);color:#fff;font-family:var(--en);font-weight:800;font-size:1.05rem;line-height:1;
+  box-shadow:0 0 18px rgba(135,206,235,.4);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.fl-num small{font-size:.46rem;letter-spacing:.2em;color:var(--sora);font-weight:700;margin-bottom:3px}
+.fl-body{border-radius:16px;padding:16px 20px;background:var(--glass);border:1px solid var(--glass-bd);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.fl-body h3{font-family:var(--jp);font-weight:700;font-size:1.02rem;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fl-body p{font-size:.88rem;line-height:1.7;color:rgba(255,255,255,.8)}
+.fl-free{display:inline-block;font-family:var(--jp-sans);font-size:.66rem;font-weight:700;padding:2px 9px;border-radius:20px;background:#FF6B00;border:1px solid #FF6B00;color:#fff;letter-spacing:.04em}
+.fl-report{border-radius:22px;padding:clamp(20px,2.6vw,28px);background:var(--glass-2);border:1px solid var(--glass-bd-2);
+  -webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4);
+  box-shadow:0 14px 34px rgba(0,0,0,.3),inset 0 1px 2px rgba(255,255,255,.16)}
+.fl-rp-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.fl-rp-title{font-family:var(--jp);font-weight:700;font-size:1.02rem;color:#fff}
+.fl-rp-tag{font-family:var(--en);font-size:.62rem;font-weight:700;letter-spacing:.18em;padding:4px 10px;border-radius:20px;color:var(--sora);border:1px solid rgba(135,206,235,.5);background:rgba(135,206,235,.1);flex-shrink:0}
+.fl-rp-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.fl-rp-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.12);display:block}
+.fl-rp-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+.fl-rp-row:last-of-type{border-bottom:none}
+.fl-rp-row .nm{font-size:.88rem;color:rgba(255,255,255,.88)}
+.fl-st{flex-shrink:0;font-size:.7rem;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap}
+.fl-st.fix{background:rgba(255,107,0,.16);color:#FF6B00;border:1px solid rgba(255,107,0,.55)}
+.fl-st.watch{background:rgba(135,206,235,.12);color:#B8E4F7;border:1px solid rgba(135,206,235,.45)}
+.fl-st.ok{background:rgba(6,199,85,.12);color:#86E7AE;border:1px solid rgba(6,199,85,.45)}
+.fl-rp-foot{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
+.fl-rp-foot .gchip{font-size:.76rem;padding:7px 12px}
+.fl-rp-note{font-size:.72rem;color:var(--muted-2);margin-top:12px;line-height:1.6}
+
+/* LINE写真見積り */
+.lq-band{margin-top:clamp(36px,5vw,56px);position:relative;overflow:hidden;display:grid;grid-template-columns:1.35fr .9fr;gap:clamp(20px,3vw,40px);align-items:center;
+  border-radius:24px;padding:clamp(24px,3.4vw,40px);
+  background:linear-gradient(135deg,rgba(6,199,85,.14),rgba(255,255,255,.04) 60%);border:1px solid rgba(6,199,85,.4);
+  -webkit-backdrop-filter:blur(22px) saturate(1.4);backdrop-filter:blur(22px) saturate(1.4);
+  box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 1px 1px rgba(255,255,255,.14)}
+.lq-band::before{content:"";position:absolute;top:-40%;right:-10%;width:380px;height:380px;background:radial-gradient(circle,rgba(6,199,85,.22),transparent 65%);pointer-events:none}
+.lq-main,.lq-side{position:relative}
+.lq-badge{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;color:#86E7AE;padding:6px 14px;border-radius:30px;background:rgba(6,199,85,.14);border:1px solid rgba(6,199,85,.45);margin-bottom:14px}
+.lq-badge svg{width:15px;height:15px;flex-shrink:0}
+.lq-band h3{font-family:var(--jp);font-weight:700;font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.5;color:#fff;margin-bottom:12px;word-break:auto-phrase;line-break:strict}
+.lq-band h3 .g{color:#06C755}
+.lq-band .desc{font-size:.92rem;line-height:1.8;color:var(--muted)}
+.lq-steps{list-style:none;display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.lq-steps li{display:flex;align-items:center;gap:8px;font-size:.84rem;font-weight:600;color:#fff;padding:8px 14px;border-radius:30px;background:rgba(255,255,255,.08);border:1px solid var(--glass-bd)}
+.lq-steps b{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#06C755;color:#fff;font-family:var(--en);font-size:.72rem}
+.lq-side{display:flex;flex-direction:column;gap:12px}
+.lq-side .line-btn{margin-bottom:0}
+.lq-note{font-size:.76rem;line-height:1.7;color:var(--muted-2)}
+
+/* 雨漏り緊急コール（PC・タブレットのみ／ヒーロー通過後に表示） */
+.em-call{position:fixed;left:24px;bottom:24px;z-index:9990;display:flex;align-items:center;gap:12px;
+  padding:10px 22px 10px 10px;border-radius:60px;text-decoration:none;color:#fff;
+  background:rgba(14,14,18,.62);border:1px solid rgba(255,107,0,.55);
+  -webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  box-shadow:0 12px 30px rgba(0,0,0,.35),0 0 0 4px rgba(255,107,0,.08);
+  opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .35s ease,transform .35s ease,box-shadow .22s}
+.em-call.show{opacity:1;transform:none;pointer-events:auto}
+.em-call:hover{box-shadow:0 14px 34px rgba(255,107,0,.4),0 0 0 4px rgba(255,107,0,.16)}
+.em-ic{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#FF6B00;flex-shrink:0;box-shadow:0 6px 16px rgba(255,107,0,.45)}
+.em-ic svg{width:20px;height:20px}
+.em-tx{display:flex;flex-direction:column;line-height:1.3}
+.em-tx .t1{font-size:.74rem;font-weight:700;color:rgba(255,255,255,.85)}
+.em-tx .t2{font-family:var(--en);font-weight:800;font-size:1.05rem;letter-spacing:.03em}
+
+@media(max-width:980px){
+  .fl-grid{grid-template-columns:1fr}
+  .lq-band{grid-template-columns:1fr}
+  .pr-caution{grid-template-columns:1fr}
+}
+@media(max-width:880px){
+  .pr-grid{grid-template-columns:1fr 1fr}
+  .em-call{display:none}  /* スマホは下部バー（電話・LINE）で代替 */
+}
+@media(max-width:560px){
+  .pr-grid{grid-template-columns:1fr}
+  .pr-card{padding:22px 20px}
+  .fl-step{grid-template-columns:46px 1fr;gap:12px}
+  .fl-num{width:46px;height:46px;font-size:.92rem}
+  .fl-steps::before{left:22px}
+  .fl-body{padding:14px 16px}
+  .lq-steps{flex-direction:column}
+}
 
 /* ===== 会社概要 ===== */
 .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:stretch}
@@ -998,6 +1165,11 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .services .svc-content{padding:20px 0 0}
  .services .svc-scroll-label{display:none}
 }
+/* PC（981px以上）：左の見出しは右の4枚を見終わるまで画面に残し、最後のカードと下端をそろえて一緒に上へ流れる
+   （881〜980pxは1列表示なので上の static のまま） */
+@media(min-width:981px){
+ .services .svc-intro{position:-webkit-sticky!important;position:sticky!important;top:100px!important;align-self:start!important}
+}
 @media(max-width:880px){
  .services.svc-horizontal .svc-split{position:relative;top:auto;height:100%!important;display:block;padding-top:92px;padding-bottom:0;overflow:visible!important}
  .services.svc-horizontal .svc-intro{width:100%;margin-bottom:24px}
@@ -1274,6 +1446,31 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   </div>
 </section>
 
+<!-- ===== 広告：無料屋根診断 実施中（サービスの直後） ===== -->
+<section class="campaign" id="campaign" aria-labelledby="campaign-title">
+  <div class="wrap">
+    <div class="cp-panel reveal">
+      <div class="cp-main">
+        <span class="cp-badge"><i aria-hidden="true"></i><span data-en="Free roof inspection &mdash; available now">無料屋根診断 実施中</span></span>
+        <h2 id="campaign-title" data-en="Free roof inspections,<br><em>available now.</em>">屋根の無料診断、<br><em>実施中です。</em></h2>
+        <p class="lead" data-en="Our craftsman checks your roof and explains its condition clearly with photos. The inspection and estimate are both free, and we never rush you into a contract. If anything worries you after a typhoon or heavy rain, ask us early.">職人が屋根の状態を点検し、写真でわかりやすくご説明します。診断もお見積りも無料、ご契約を急かすことはありません。台風や大雨のあとに気になることがあれば、早めにご相談ください。</p>
+        <div class="cp-offers">
+          <div class="cp-offer"><span class="k" data-en="Inspection">屋根診断</span><span class="v en" data-en="&yen;0">0<small>円</small></span></div>
+          <div class="cp-offer"><span class="k" data-en="Estimate">お見積り</span><span class="v en" data-en="&yen;0">0<small>円</small></span></div>
+          <div class="cp-offer"><span class="k" data-en="Service area">対応エリア</span><span class="v jp" data-en="All of Miyazaki">宮崎市全域</span></div>
+        </div>
+        <p class="cp-note" data-en="*There is no charge at all if you decline after the inspection or estimate.">※診断・お見積りのあとにお断りいただいても、費用は一切かかりません。</p>
+      </div>
+      <div class="cp-actions">
+        <a class="cp-apply" href="#contact" data-en="Request a free inspection">無料診断を申し込む</a>
+        <a class="cp-tel" href="tel:090-4273-1478"><span class="lb" data-en="Apply by phone">お電話でのお申し込み</span><span class="num">090-4273-1478</span></a>
+        <a class="cp-line" href="https://line.me/ti/p/n2KM4ksPqv" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="white" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M12 0C5.373 0 0 4.975 0 11.111c0 3.498 1.744 6.614 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.975 12-11.111C24 4.975 18.627 0 12 0"/></svg><span data-en="Apply on LINE">LINEで申し込む</span></a>
+        <small data-en="Hours 8:00&ndash;18:00 / Closed Sundays">受付 8:00〜18:00（日曜定休）</small>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== 施工事例 ===== -->
 <section class="gallery" id="gallery">
   <div class="wrap">
@@ -1367,6 +1564,10 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       </div>
     </div>
 
+    <!-- ===== お客様の声：現在は非表示（保留中） =====
+         再表示するときは、すぐ下の data-show="false" を data-show="true" に変えるだけでOK。
+         ※掲載するのは実際のお客様の声だけにすること（架空の声はステマ規制・景品表示法のリスク） -->
+    <div class="voices-block" data-show="false">
     <div class="sec-head center reveal" style="margin-top:clamp(48px,7vw,80px);margin-bottom:clamp(28px,4vw,44px)">
       <h2 class="sec-title" data-en="Customer Voices">お客様の声</h2>
       <p style="color:var(--muted);font-size:.92rem;margin-top:8px;text-align:center" data-en="Voices from our 2,000+ completed projects">施工実績2,000件以上のお客様からの声</p>
@@ -1389,6 +1590,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         <div class="who"><div class="ava ava-3" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none"><defs><linearGradient id="avbg2" x2="1" y2="1"><stop stop-color="#dce3ee"/><stop offset="1" stop-color="#a3b3c9"/></linearGradient><linearGradient id="avskin2" x2="1" y2="1"><stop stop-color="#f5d8bd"/><stop offset="1" stop-color="#c68f73"/></linearGradient></defs><rect width="120" height="120" rx="60" fill="url(#avbg2)"/><circle cx="91" cy="24" r="36" fill="#fff" opacity=".15"/><path d="M14 120c0-26 17-40 45-40 29 0 46 14 47 40" fill="#424e65"/><path d="M49 69h21v21l-10 9-11-9Z" fill="#cb987c"/><path d="M45 82l15 11 14-11 8 38H37Z" fill="#f5eee3"/><path d="M33 42c-8-19 3-30 19-30 16-7 32 1 33 17l-3 18Z" fill="#676c72"/><ellipse cx="34" cy="51" rx="5" ry="8" fill="#d7a185"/><ellipse cx="82" cy="51" rx="5" ry="8" fill="#d7a185"/><path d="M36 34c0-12 44-15 44 0v21c0 16-11 25-21 25S36 70 36 55Z" fill="url(#avskin2)"/><path d="M34 40c15 1 27-6 32-15 4 8 9 13 17 14l-4-17-30-4-15 12Z" fill="#676c72"/><path d="M39 32c9-10 20-12 31-8" stroke="#fff" opacity=".12" stroke-width="3" stroke-linecap="round"/><g stroke="#424b58" stroke-width="1.7"><rect x="39" y="42" width="17" height="13" rx="5"/><rect x="63" y="42" width="17" height="13" rx="5"/><path d="M56 47h7"/></g><circle cx="48" cy="48" r="1.5" fill="#43454b"/><circle cx="71" cy="48" r="1.5" fill="#43454b"/><path d="M59 49l-2 10h5" stroke="#b47b62" stroke-width="1.4" stroke-linecap="round"/><ellipse cx="43" cy="59" rx="5" ry="3" fill="#be7569" opacity=".18"/><ellipse cx="74" cy="59" rx="5" ry="3" fill="#be7569" opacity=".18"/><path d="M51 65q8 6 16-1" stroke="#8f5b4e" stroke-width="1.8" stroke-linecap="round"/><path d="M43 84l-10 10 12 10-5 16m36-36 11 10-12 10 5 16" stroke="#fff" opacity=".13" stroke-width="1.4"/></svg></div><div><div class="nm" data-en="Mr./Ms. S">S様</div><div class="at" data-en="Miyazaki · Commercial">宮崎市・商業施設</div></div></div>
       </div>
     </div>
+    </div>
 
   </div>
 
@@ -1400,6 +1602,148 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
         <div class="cert-logo"><img class="cert-img" src="assets/images/maker-kmew.png" alt="KMEW（ケイミュー）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm">KMEW</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
         <div class="cert-logo"><img class="cert-img" src="assets/images/maker-sanshu.png" alt="鶴弥（三州瓦）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Tsuruya (Sanshu Tile)">鶴弥（三州瓦）</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
         <div class="cert-logo"><img class="cert-img" src="assets/images/maker-awaji.png" alt="淡路瓦 認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Awaji Tile">淡路瓦</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 安心宣言（訪問販売の点検商法とは違います） ===== -->
+<section class="promise" id="promise">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="sec-kicker">Our Promise</span>
+      <h2 class="sec-title" data-en="Our <span class='sora'>6 promises</span> to you">秦野瓦店の<br class="sp-br"><span class="sora">6つのお約束</span></h2>
+      <p class="sec-lead" data-en="&ldquo;We were working nearby and noticed some of your roof tiles have slipped&hellip;&rdquo; Trouble with door-to-door &lsquo;free inspection&rsquo; sales like this is happening all over Japan. We do things differently, and we make you these promises.">「近くで工事をしていたら、お宅の屋根の瓦がずれているのが見えて…」と突然訪ねてくる“点検商法”のトラブルが全国で起きています。私たちはそうした営業とは一線を画し、次のことをお約束します。</p>
+    </div>
+    <div class="pr-grid">
+      <div class="pr-card reveal">
+        <span class="pr-no en">01</span>
+        <div class="pr-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.7 3A6 6 0 0 1 18 8a21.3 21.3 0 0 0 .6 5"/><path d="M17 17H3s3-2 3-9a4.67 4.67 0 0 1 .3-1.7"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><path d="m2 2 20 20"/></svg></div>
+        <h3 data-en="We never visit unannounced">突然の訪問営業はしません</h3>
+        <p data-en="We never drop by claiming we &ldquo;happened to be working nearby.&rdquo; We only visit when you ask us to.">「近くで工事をしていて…」と、こちらから突然伺うことはありません。点検に伺うのは、お客様からご依頼いただいたときだけです。</p>
+      </div>
+      <div class="pr-card reveal">
+        <span class="pr-no en">02</span>
+        <div class="pr-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></div>
+        <h3 data-en="No pressure to sign on the spot">その場で契約を迫りません</h3>
+        <p data-en="We never rush you to sign on inspection day. Take the estimate home and decide with your family at your own pace.">診断のその日に契約を急かすことはありません。お見積りはお持ち帰りいただき、ご家族とゆっくりご検討ください。</p>
+      </div>
+      <div class="pr-card reveal">
+        <span class="pr-no en">03</span>
+        <div class="pr-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div>
+        <h3 data-en="We show you every photo">屋根の写真をすべてお見せします</h3>
+        <p data-en="You can&rsquo;t see your own roof, so we explain its real condition while showing you the photos we take.">屋根の上はご自身では見えないからこそ、撮影した写真をお見せしながら、状態をありのままにご説明します。</p>
+      </div>
+      <div class="pr-card reveal">
+        <span class="pr-no en">04</span>
+        <div class="pr-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3 data-en="We only propose what you need">必要な工事だけをご提案します</h3>
+        <p data-en="We never stir up fear to sell unnecessary work. If a repair can wait, we&rsquo;ll honestly tell you so.">不安をあおって不要な工事をすすめることはしません。「今は直さなくても大丈夫」な場合も、正直にお伝えします。</p>
+      </div>
+      <div class="pr-card reveal">
+        <span class="pr-no en">05</span>
+        <div class="pr-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+        <h3 data-en="Saying no is perfectly fine">お見積り後のお断りも大丈夫です</h3>
+        <p data-en="If you decline after seeing the estimate, it costs you nothing &mdash; and we won&rsquo;t follow up with pushy sales calls.">お見積りを見てお断りいただいても、費用は一切かかりません。後からしつこく営業の電話をすることもありません。</p>
+      </div>
+      <div class="pr-card reveal">
+        <span class="pr-no en">06</span>
+        <div class="pr-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 data-en="A local Miyazaki company">宮崎市の地元の会社です</h3>
+        <p data-en="We&rsquo;re based in Kagamizu, Miyazaki City. Even after the work is done, we&rsquo;re close by and can come right away if anything comes up.">宮崎市鏡洲に拠点を構える地元の会社です。工事が終わったあとも、何かあればすぐに駆けつけます。</p>
+      </div>
+    </div>
+
+    <div class="pr-caution reveal">
+      <div>
+        <h4><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span data-en="Beware of contractors like these">こんな訪問業者にご注意ください</span></h4>
+        <ul>
+          <li data-en="Turns up without an appointment and says your roof is damaged">約束もなく訪ねてきて「屋根が傷んでいる」と言う</li>
+          <li data-en="Offers a &ldquo;free inspection,&rdquo; climbs your roof, then shows you photos of damage">「無料で点検します」と屋根に上がり、壊れた箇所の写真を見せてくる</li>
+          <li data-en="Pushes you to decide right now: &ldquo;Sign today and we&rsquo;ll give you a discount&rdquo;">「今日契約すれば安くします」と、その場で決めるよう迫る</li>
+        </ul>
+      </div>
+      <div class="pr-help">
+        <div class="lb" data-en="Worried? Call the Consumer Hotline">困ったときは消費者ホットラインへ</div>
+        <div class="tel en">188<small data-en="(3-digit number, nationwide)">（局番なし）</small></div>
+        <p data-en="Even if you signed a door-to-door sales contract, you can in principle cancel it (cooling-off) within 8 days of receiving the contract documents.">訪問販売で契約してしまっても、契約書面を受け取ってから8日以内であれば、原則としてクーリング・オフができます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 無料診断の流れ ＋ LINE写真見積り ===== -->
+<section class="flow" id="flow">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="sec-kicker">Flow</span>
+      <h2 class="sec-title" data-en="How the <span class='sora'>free inspection</span> works">無料診断の<span class="sora">流れ</span></h2>
+      <p class="sec-lead" data-en="From your first message to the finished job, we keep every step clear. The inspection and estimate are free, and you&rsquo;re welcome to decline if you&rsquo;re not satisfied.">お問い合わせから工事まで、ひとつずつ分かりやすく進めます。診断・お見積りは無料。ご納得いただけなければ、お断りいただいて大丈夫です。</p>
+    </div>
+    <div class="fl-grid">
+      <ol class="fl-steps">
+        <li class="fl-step reveal">
+          <div class="fl-num"><small>STEP</small>01</div>
+          <div class="fl-body"><h3><span data-en="Contact us">お問い合わせ</span><span class="fl-free" data-en="Free">無料</span></h3><p data-en="Reach us by form, phone or LINE &mdash; whichever is easiest for you.">フォーム・お電話・LINEから、ご都合のよい方法でお気軽にどうぞ。</p></div>
+        </li>
+        <li class="fl-step reveal">
+          <div class="fl-num"><small>STEP</small>02</div>
+          <div class="fl-body"><h3><span data-en="Schedule a visit">日程のご相談</span></h3><p data-en="We&rsquo;ll ask what suits you and set a date for our visit.">ご都合のよい日時を伺って、訪問日を決めます。</p></div>
+        </li>
+        <li class="fl-step reveal">
+          <div class="fl-num"><small>STEP</small>03</div>
+          <div class="fl-body"><h3><span data-en="On-site roof check">現地で屋根を点検</span><span class="fl-free" data-en="Free">無料</span></h3><p data-en="Our craftsman visits and checks the roof and any leak points.">職人が伺い、屋根の状態や雨漏りの箇所を確認します。</p></div>
+        </li>
+        <li class="fl-step reveal">
+          <div class="fl-num"><small>STEP</small>04</div>
+          <div class="fl-body"><h3><span data-en="Photo explanation &amp; estimate">写真でご説明・お見積り</span><span class="fl-free" data-en="Free">無料</span></h3><p data-en="We show you the photos and explain the condition, the work needed and the cost.">撮影した写真をお見せしながら、状態と必要な工事・費用をご説明します。</p></div>
+        </li>
+        <li class="fl-step reveal">
+          <div class="fl-num"><small>STEP</small>05</div>
+          <div class="fl-body"><h3><span data-en="Work begins only if you agree">ご納得いただけたら施工</span></h3><p data-en="We sign a contract and start work only once you&rsquo;re fully satisfied with the plan.">内容にご納得いただけた場合のみご契約いただき、施工に入ります。</p></div>
+        </li>
+      </ol>
+
+      <div class="fl-report reveal">
+        <div class="fl-rp-head">
+          <span class="fl-rp-title" data-en="What we explain after the inspection">診断でお伝えすること</span>
+          <span class="fl-rp-tag">SAMPLE</span>
+        </div>
+        <div class="fl-rp-photos">
+          <img src="assets/images/work8.jpg" alt="点検で撮影する屋根の写真（例）：隅棟のライン" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/images/work9.jpg" alt="点検で撮影する屋根の写真（例）：瓦の状態" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/images/work4.jpg" alt="点検で撮影する屋根の写真（例）：入母屋屋根の全体" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <div class="fl-rp-row"><span class="nm" data-en="Shifted ridge tiles">棟瓦（むねがわら）のずれ</span><span class="fl-st fix" data-en="Repair">要補修</span></div>
+        <div class="fl-rp-row"><span class="nm" data-en="Worn mortar (shikkui)">漆喰（しっくい）の劣化</span><span class="fl-st fix" data-en="Repair">要補修</span></div>
+        <div class="fl-rp-row"><span class="nm" data-en="Rust on valley flashing">谷板金のサビ</span><span class="fl-st watch" data-en="Monitor">経過観察</span></div>
+        <div class="fl-rp-row"><span class="nm" data-en="Cracked roof tiles">平瓦の割れ</span><span class="fl-st ok" data-en="No issue">問題なし</span></div>
+        <div class="fl-rp-foot">
+          <span class="gchip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span data-en="Photo-based explanation">写真でご説明</span></span>
+          <span class="gchip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg><span data-en="Repair priorities">工事の優先度</span></span>
+          <span class="gchip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg><span data-en="Written estimate">お見積書</span></span>
+        </div>
+        <p class="fl-rp-note" data-en="*Illustrative example. What we check depends on the condition of your roof.">※内容はイメージです。点検する項目は屋根の状態によって異なります。</p>
+      </div>
+    </div>
+
+    <div class="lq-band reveal">
+      <div class="lq-main">
+        <span class="lq-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span data-en="No phone call needed">お電話が苦手な方にも</span></span>
+        <h3 data-en="Just send a photo on LINE<br>for a <span class='g'>rough estimate</span>">LINEで写真を送るだけで<br><span class="g">概算のお見積り</span></h3>
+        <p class="desc" data-en="Not keen on calling or filling out a form? Send us a photo of the spot you&rsquo;re worried about on LINE, and we&rsquo;ll reply with a rough idea of the cost.">お電話やフォームが面倒な方は、気になる箇所の写真をLINEで送ってください。写真を拝見して、おおよその費用をお返事します。</p>
+        <ol class="lq-steps">
+          <li><b>1</b><span data-en="Add us on LINE">友だち追加</span></li>
+          <li><b>2</b><span data-en="Send photos">写真を送る</span></li>
+          <li><b>3</b><span data-en="Get a rough quote">概算をお返事</span></li>
+        </ol>
+      </div>
+      <div class="lq-side">
+        <a href="https://line.me/ti/p/n2KM4ksPqv" target="_blank" rel="noopener" class="line-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="white" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M12 0C5.373 0 0 4.975 0 11.111c0 3.498 1.744 6.614 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.975 12-11.111C24 4.975 18.627 0 12 0"/></svg>
+          <span data-en="Send photos on LINE">LINEで写真を送る</span>
+        </a>
+        <p class="lq-note" data-en="*Please don&rsquo;t climb onto the roof &mdash; photos taken from the ground or a balcony are fine.<br>*If photos aren&rsquo;t enough for an accurate figure, we&rsquo;ll arrange a free on-site inspection.">※屋根には登らず、地上やベランダから撮れる範囲で大丈夫です。<br>※写真だけで正確な金額が出せない場合は、現地での無料診断をご案内します。</p>
       </div>
     </div>
   </div>
@@ -1600,7 +1944,9 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
           <label data-en="Questions / requests">ご質問・ご要望</label>
           <textarea name="message" placeholder="築年数や気になる症状などをご記入ください（任意）" data-en-ph="Tell us the building age or any symptoms (optional)"></textarea>
         </div>
+        <div class="hp-field" aria-hidden="true"><label>この欄は空のままにしてください<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
         <button type="submit" class="btn btn-primary form-submit" data-en="Request a Free Inspection">無料で診断を申し込む</button>
+        <div class="form-error" id="formError" role="alert"><span data-en="Sorry, your request couldn&rsquo;t be sent. Please call us at <a href='tel:090-4273-1478'>090-4273-1478</a> or message us on <a href='https://line.me/ti/p/n2KM4ksPqv' target='_blank' rel='noopener'>LINE</a>.">送信できませんでした。お手数ですが、お電話（<a href="tel:090-4273-1478">090-4273-1478</a>）または<a href="https://line.me/ti/p/n2KM4ksPqv" target="_blank" rel="noopener">LINE</a>でご連絡ください。</span></div>
         <p class="form-note" data-en="Your details are used only to contact you about the roof inspection.<br>No pushy sales, and we never start work without your consent.">送信いただいた内容は屋根診断のご連絡のみに使用します。<br>しつこい営業や、ご了承なく工事を進めることはありません。</p>
       </form>
       <div class="form-success" id="formSuccess">
@@ -1647,6 +1993,12 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 </div>
 
 <!-- ===== モバイル追従CTA ===== -->
+<!-- ===== 雨漏り緊急コール（PC・タブレット：ヒーロー通過後に表示） ===== -->
+<a href="tel:090-4273-1478" class="em-call" id="emCall" aria-label="雨漏りなどお急ぎの方はお電話ください：090-4273-1478">
+  <span class="em-ic" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s-6.5 7.1-6.5 11.8a6.5 6.5 0 0 0 13 0C18.5 9.8 12 2.7 12 2.7z"/></svg></span>
+  <span class="em-tx"><span class="t1" data-en="Roof leaking right now? Call us">いま雨漏りしている方はお電話を</span><span class="t2">090-4273-1478</span></span>
+</a>
+
 <div class="mobile-bar">
   <a href="tel:090-4273-1478" class="m-tel">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
@@ -2108,7 +2460,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     var track=document.getElementById('scrollNavTrack');
     var thumb=document.getElementById('scrollNavThumb');
     if(!track||!thumb)return;
-    var sectionIds=['hero','stats','services','gallery','trust','faq','company','contact'];
+    var sectionIds=['hero','stats','services','campaign','gallery','trust','promise','flow','faq','company','contact'];
     var sections=sectionIds.map(function(id){return document.getElementById(id);}).filter(Boolean);
     var count=sections.length;
     var trackH=200;
@@ -2275,23 +2627,83 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     if(window.ScrollTrigger){ScrollTrigger.create({trigger:deck,start:'top 92%',onEnter:update});}
   })();
 
-  /* ---- フォーム送信 ---- */
+  /* ---- 雨漏り緊急コール：ヒーロー通過後に表示（フィナーレ〜フッターでは隠す） ---- */
+  (function(){
+    var em=document.getElementById('emCall');
+    var heroEl=document.getElementById('hero');
+    var finEl=document.getElementById('finale');
+    if(!em||!heroEl)return;
+    var ticking=false;
+    function upd(){
+      ticking=false;
+      var vh=window.innerHeight;
+      var pastHero=heroEl.getBoundingClientRect().bottom<vh*0.4;
+      var nearEnd=finEl?finEl.getBoundingClientRect().top<vh*0.85:false;
+      em.classList.toggle('show',pastHero&&!nearEnd);
+    }
+    window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
+    window.addEventListener('resize',upd);
+    upd();
+  })();
+
+  /* ---- フォーム送信：FormSubmit 経由で hatano1130ryu@gmail.com にメールで届く ----
+     ※最初の1回目の送信で FormSubmit から「Activate Form」メールが届く。リンクを押して有効化すると以降は自動で届く。
+     ※有効化メールに書かれたランダム文字列をメールアドレスの代わりに使うと、アドレスを隠せる。 */
+  var FORM_ENDPOINT='https://formsubmit.co/ajax/hatano1130ryu@gmail.com';
   var form=document.getElementById('diagForm');
+  var formErr=document.getElementById('formError');
+  var submitBtn=form.querySelector('.form-submit');
+  var sending=false;
   form.addEventListener('submit',function(e){
     e.preventDefault();
+    if(sending)return;
+    var en=document.documentElement.getAttribute('lang')==='en';
     var name=form.elements['name'].value.trim();
     var tel=form.elements['tel'].value.trim();
-    var topic=form.elements['topic'].value;
-    if(!name||!tel||!topic){
-      alert('お名前・電話番号・ご相談内容は必須です。ご入力をお願いします。');
+    var topicEl=form.elements['topic'];
+    if(!name||!tel||!topicEl.value){
+      alert(en?'Please enter your name, phone number and inquiry.':'お名前・電話番号・ご相談内容は必須です。ご入力をお願いします。');
       return;
     }
-    /* ===== 本番ではここでバックエンド/フォーム送信サービス(例:Formspree, 自社メール)へ接続 =====
-       例: fetch('https://formspree.io/f/XXXX',{method:'POST',body:new FormData(form)})
-       現状はデモとして送信完了画面を表示します。 */
-    form.style.display='none';
-    document.getElementById('formSuccess').classList.add('show');
-    if(lenis){lenis.scrollTo('#contact',{offset:-70});}
+    if(form.elements['_honey']&&form.elements['_honey'].value)return; // ボット対策（人には見えない欄）
+    var payload={
+      _subject:'【ホームページ】無料診断のお申し込み（'+name+' 様）',
+      _template:'table',
+      _captcha:'false',
+      'お名前':name,
+      '電話番号':tel,
+      'ご相談内容':topicEl.options[topicEl.selectedIndex].text,
+      '建物の所在地':form.elements['area'].value.trim()||'（未記入）',
+      'ご質問・ご要望':form.elements['message'].value.trim()||'（未記入）',
+      '送信元ページ':location.href
+    };
+    var mail=form.elements['email'].value.trim();
+    if(mail)payload.email=mail; // 返信先として使われる
+    sending=true;
+    formErr.classList.remove('show');
+    var label=submitBtn.innerHTML;
+    submitBtn.disabled=true;
+    submitBtn.innerHTML=en?'Sending…':'送信中…';
+    var ctrl=('AbortController' in window)?new AbortController():null;
+    var timer=setTimeout(function(){if(ctrl)ctrl.abort();},15000);
+    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload),signal:ctrl?ctrl.signal:undefined})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(d){return {ok:r.ok,d:d||{}};});})
+      .then(function(res){
+        clearTimeout(timer);
+        if(!(res.ok&&(res.d.success===true||res.d.success==='true'))){throw new Error(res.d.message||'send failed');}
+        form.style.display='none';
+        document.getElementById('formSuccess').classList.add('show');
+        if(lenis){lenis.scrollTo('#contact',{offset:-70});}
+      })
+      .catch(function(err){
+        clearTimeout(timer);
+        if(window.console)console.warn('[form]',err&&err.message);
+        submitBtn.disabled=false;
+        submitBtn.innerHTML=label;
+        formErr.classList.add('show');
+      })
+      .then(function(){sending=false;});
   });
 })();
 </script>
