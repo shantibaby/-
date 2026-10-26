@@ -56,6 +56,8 @@
   /* すりガラス：白だと明るい背景で白文字が読みにくいので、暗い紺の半透明にする */
   --glass:rgba(16,22,32,.42);
   --glass-2:rgba(16,22,32,.5);
+  /* 白いすりガラス（実績の数字・メーカーのカード用） */
+  --glass-light:rgba(255,255,255,.055);
   --glass-bd:rgba(255,255,255,.13);
   --glass-bd-2:rgba(255,255,255,.2);
   --glow-sora:rgba(245,138,75,.30);
@@ -421,7 +423,7 @@ body::before{display:none!important}
 @keyframes shieldPulse{0%,100%{filter:drop-shadow(0 0 10px rgba(245,138,75,.35));transform:scale(1)}50%{filter:drop-shadow(0 0 24px rgba(245,138,75,.7));transform:scale(1.04)}}
 .stat{
   position:relative;text-align:center;border-radius:20px;padding:clamp(24px,2.4vw,32px) 20px;min-width:0;
-  background:var(--glass);border:1px solid var(--glass-bd);
+  background:var(--glass-light);border:1px solid var(--glass-bd);
   -webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4);
   box-shadow:0 10px 26px rgba(0,0,0,.22),inset 0 1px 1px rgba(255,255,255,.12);
   overflow:hidden;
@@ -571,7 +573,7 @@ body::before{display:none!important}
 /* モバイルは認定代理店を縦1列に */
 @media(max-width:560px){.cert-logos{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto;gap:16px}}
 .cert-logo{border-radius:14px;padding:22px 20px;min-width:0;text-align:center;
-  background:var(--glass);border:1px solid var(--glass-bd);
+  background:var(--glass-light);border:1px solid var(--glass-bd);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
 .cert-logo .cert-img{display:block;width:100%;max-width:220px;height:60px;object-fit:contain;background:#fff;border-radius:10px;padding:15px 30px;margin:0 auto 14px;box-sizing:border-box}
 .cert-logo .nm{font-family:var(--jp);font-weight:700;font-size:1.05rem;color:#fff}
