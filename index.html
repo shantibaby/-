@@ -159,6 +159,7 @@ header{
 html[lang="en"] .logo .sub{display:none}
 html[lang="en"] .foot-logo .sub{display:none}
 html[lang="en"] .logo .mark{white-space:nowrap;font-size:1rem;letter-spacing:-.01em}
+@media(max-width:520px){html[lang="en"] .logo .mark{font-size:.84rem}}
 /* フッター英語社名の「Co., Ltd.」改行はモバイルのみ（PCは1行） */
 @media(min-width:561px){.foot-br{display:none}}
 .nav{display:flex;align-items:center;gap:24px;justify-self:end!important;justify-content:flex-end;margin-right:28px}
@@ -265,6 +266,9 @@ section{position:relative}
 .hero-line-one{display:inline-block;white-space:nowrap}
 h1 .accent,h2 .sora{font-weight:800}
 .accent-letter{display:inline-block;transform-origin:center bottom}
+.accent-word{white-space:nowrap}
+/* 英語：オレンジの語句は単語の切れ目で改行してカード内に収める */
+html[lang="en"] .hero h1 .accent{white-space:normal}
 @keyframes accentBeat{0%,10%,100%{transform:scale(1)}4%{transform:scale(1.3)}}
 @media(prefers-reduced-motion:no-preference){
  .hero-text-beat h1 .accent-letter,h2.accent-beat .accent-letter{animation:accentBeat 2.8s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--letter-index) * .105s)}
@@ -2002,11 +2006,11 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 <div class="mobile-bar">
   <a href="tel:090-4273-1478" class="m-tel">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
-    電話で相談する
+    <span data-en="Call Us">電話で相談する</span>
   </a>
   <a href="https://line.me/ti/p/n2KM4ksPqv" target="_blank" rel="noopener" class="m-cta">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="white" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M12 0C5.373 0 0 4.975 0 11.111c0 3.498 1.744 6.614 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.975 12-11.111C24 4.975 18.627 0 12 0"/></svg>
-    LINEで相談する
+    <span data-en="Chat on LINE">LINEで相談する</span>
   </a>
 </div>
 
@@ -2066,12 +2070,21 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
       if(el.querySelector('.accent-letter'))return;
       var value=el.textContent;
       el.textContent='';
-      Array.from(value).forEach(function(letter,index){
-        var span=document.createElement('span');
-        span.className='accent-letter';
-        span.style.setProperty('--letter-index',index);
-        span.textContent=letter;
-        el.appendChild(span);
+      // 単語ごとにまとめ、スペースは普通の文字として残す（英語で単語がつながらないように）
+      var index=0;
+      value.split(/(\s+)/).forEach(function(part){
+        if(!part)return;
+        if(/^\s+$/.test(part)){el.appendChild(document.createTextNode(' '));return;}
+        var word=document.createElement('span');
+        word.className='accent-word';
+        Array.from(part).forEach(function(letter){
+          var span=document.createElement('span');
+          span.className='accent-letter';
+          span.style.setProperty('--letter-index',index++);
+          span.textContent=letter;
+          word.appendChild(span);
+        });
+        el.appendChild(word);
       });
     });
     if(accentObserver){
