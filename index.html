@@ -1009,7 +1009,13 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   .gal-grid{grid-template-columns:1fr 1fr}
   .voices{grid-template-columns:1fr}
   .guarantee{grid-template-columns:1fr;text-align:center}
-  .cta .wrap{grid-template-columns:1fr}
+  /* モバイル：お問い合わせもグリッドをやめてブロック積み（iPhoneで右にはみ出す対策） */
+  .cta .wrap{display:block}
+  .cta-copy,.form-card{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+  .form-card{margin-top:36px;padding:24px 18px}
+  .cta-tel{padding:18px 18px;box-sizing:border-box;max-width:100%}
+  .cta-tel a{font-size:1.5rem}
+  .cta-copy .urgent{max-width:100%;box-sizing:border-box}
   /* モバイル：グリッドをやめてブロック積み＋固定レイアウト表（はみ出し完全防止） */
   .comp-grid{display:block}
   .comp-side,.comp-map{min-width:0;max-width:100%;width:100%}
