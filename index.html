@@ -2157,15 +2157,30 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     var whiteout=document.getElementById('whiteout');
     var heroSwapped=false;
     var swapPending=false;
-    var swapToScrollVideo=function(){
+    // 二本目を最初から裏で準備しておく（iPhoneは再生するまで読み込まないため、一度再生してすぐ止める）
+    var bgPrimed=false;
+    var primeBgVideo=function(){
+      if(bgPrimed||!scrollVideoForSwap)return;bgPrimed=true;
+      var p=scrollVideoForSwap.play&&scrollVideoForSwap.play();
+      if(p&&p.then){p.then(function(){scrollVideoForSwap.pause();}).catch(function(){bgPrimed=false;});}
+      else{scrollVideoForSwap.pause();}
+    };
+    heroVideo.addEventListener('playing',primeBgVideo,{once:true});
+    primeBgVideo();
+    // 自動再生が止められている端末では、最初のタッチで準備する
+    window.addEventListener('touchstart',primeBgVideo,{once:true,passive:true});
+    var swapToScrollVideo=function(force){
       if(heroSwapped)return;
-      // 二本目の最初のフレームが届くまで、一本目の最終フレームを残す。
-      if(scrollVideoForSwap && scrollVideoForSwap.readyState<2){
+      // スクロールで切り替える時は待たずにすぐ二本目へ（一本目を上に流さない）
+      // 自然に終わった時だけ、二本目の最初のフレームが届くまで一本目の最終フレームを残す。
+      if(force!==true && scrollVideoForSwap && scrollVideoForSwap.readyState<2){
         if(!swapPending){swapPending=true;scrollVideoForSwap.addEventListener('loadeddata',swapToScrollVideo,{once:true});}
         return;
       }
       heroSwapped=true;
-      if(window.gsap && !reduceMotion && whiteout){
+      if(force===true){
+        if(heroBg){heroBg.style.transition='opacity .2s ease';heroBg.style.opacity='0';}
+      }else if(window.gsap && !reduceMotion && whiteout){
         gsap.timeline()
           .to(whiteout,{opacity:1,duration:.35,ease:'power2.in'})
           .add(function(){ if(heroBg){heroBg.style.opacity='0';} })
@@ -2177,7 +2192,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     heroVideo.addEventListener('ended',swapToScrollVideo);
     // スクロールを始めたら待たずに背景動画へ切替（scroll2のスタートを早める）
     window.addEventListener('scroll',function onEarlySwap(){
-      if(window.scrollY>15){swapToScrollVideo();window.removeEventListener('scroll',onEarlySwap);}
+      if(window.scrollY>15){swapToScrollVideo(true);window.removeEventListener('scroll',onEarlySwap);}
     },{passive:true});
   }
 
