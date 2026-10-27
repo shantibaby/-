@@ -239,7 +239,7 @@ section{position:relative}
 .hero-card{
   position:relative;z-index:3;width:clamp(320px,48%,620px);
   margin-left:clamp(0px,4vw,60px);
-  padding:clamp(28px,3.4vw,48px);border-radius:26px;
+  padding:clamp(28px,3.1vw,44px);border-radius:26px;
   background:var(--glass);
   border:1px solid var(--glass-bd);
   -webkit-backdrop-filter:blur(20px) saturate(1.4);
@@ -249,9 +249,9 @@ section{position:relative}
 /* PC（デスクトップ）ではヒーローのカードを少し下げる（右のテキストもJSで連動して下がる） */
 @media(min-width:1367px){.hero-card{margin-top:120px}}
 .hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;font-family:var(--en);font-size:.72rem;letter-spacing:.28em;
+  display:inline-flex;align-items:center;gap:8px;font-family:var(--en);font-size:.7rem;letter-spacing:.2em;
   text-transform:uppercase;color:#fff;
-  padding:8px 18px;border-radius:40px;margin-bottom:26px;
+  padding:8px 16px;border-radius:40px;margin-bottom:22px;
   background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.28);
   -webkit-backdrop-filter:blur(16px) saturate(1.5);
@@ -261,10 +261,11 @@ section{position:relative}
 .hero-eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sora);box-shadow:0 0 10px var(--sora)}
 .hero h1{
   font-family:var(--jp);font-weight:700;
-  font-size:clamp(1.8rem,3.6vw,2.9rem);line-height:1.4;
-  text-shadow:0 4px 30px rgba(0,0,0,.55);margin-bottom:22px;color:#fff;
+  font-size:clamp(1.8rem,3.15vw,2.65rem);line-height:1.42;
+  letter-spacing:-.015em;text-wrap:balance;
+  text-shadow:0 4px 30px rgba(0,0,0,.55);margin-bottom:20px;color:#fff;
 }
-.hero h1 .accent{color:var(--sora);font-size:1.30em;white-space:nowrap}
+.hero h1 .accent{color:var(--sora);font-size:1.1em;white-space:nowrap}
 .hero-line-one{display:inline-block;white-space:nowrap}
 h1 .accent,h2 .sora{font-weight:800}
 .accent-letter{display:inline-block;transform-origin:center bottom}
@@ -275,8 +276,8 @@ html[lang="en"] .hero h1 .accent{white-space:normal}
 @media(prefers-reduced-motion:no-preference){
  .hero-text-beat h1 .accent-letter,h2.accent-beat .accent-letter{animation:accentBeat 2.8s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--letter-index) * .105s)}
 }
-.hero .lead{font-size:clamp(.95rem,1.7vw,1.12rem);color:rgba(255,255,255,.9);margin-bottom:36px;font-weight:500}
-.hero-ctas{display:flex;flex-direction:row;gap:16px;flex-wrap:wrap}
+.hero .lead{font-size:clamp(.95rem,1.7vw,1.12rem);line-height:1.72;color:rgba(255,255,255,.9);margin-bottom:28px;font-weight:500}
+.hero-ctas{display:flex;flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap}
 /* ヒーローボタン Organimo風リデザイン */
 @keyframes breathe{
   0%,100%{box-shadow:0 0 0px rgba(255,255,255,.2);border-color:rgba(255,255,255,.2)}
@@ -298,16 +299,16 @@ html[lang="en"] .hero h1 .accent{white-space:normal}
 .hero-ctas .btn-primary{
   background:#FF6B00!important;color:#ffffff!important;
   border:1px solid #FF6B00!important;box-shadow:0 8px 24px rgba(255,107,0,.4)!important;
-  padding:16px 24px 16px 32px;
+  padding:14px 20px 14px 26px;
   border-radius:50px;
-  font-family:var(--jp-sans);font-weight:700;font-size:1rem;
-  letter-spacing:.1em;
-  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--jp-sans);font-weight:700;font-size:.96rem;
+  letter-spacing:.06em;
+  display:inline-flex;align-items:center;gap:10px;
   -webkit-backdrop-filter:none;backdrop-filter:none;
 }
 .hero-ctas .btn-primary:hover{background:#E55F00!important;border-color:#E55F00!important;transform:none;box-shadow:0 12px 30px rgba(255,107,0,.6)!important}
 .hero-arrow{
-  width:36px;height:36px;border-radius:50%;
+  width:32px;height:32px;border-radius:50%;
   background:rgba(255,255,255,.9);
   display:flex;align-items:center;justify-content:center;
   font-size:1.1rem;color:#FF6B00;flex-shrink:0;
@@ -1105,7 +1106,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   /* 幅を狭めて少し縦長に＋左寄せ */
   .hero-card{width:62vw!important;max-width:500px!important;margin-left:0!important}
   /* 「瓦から雨漏り修理まで、」の後でBR改行を使い、その後は自然に折り返す。字間は詰める */
-  .hero h1{letter-spacing:-.06em!important;word-break:auto-phrase}
+  .hero h1{font-size:clamp(1.75rem,3.05vw,2.35rem);letter-spacing:-.02em!important;word-break:auto-phrase}
   .hero-bl{bottom:28px!important}
   /* タブレット：ナビをハンバーガー化＋ロゴ拡大＋ヘッダーを少し下げる */
   header{top:26px}
@@ -1263,10 +1264,10 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
  .services.svc-horizontal .svc-card p{line-height:1.42;letter-spacing:-.02em}
 }
 @media(max-width:560px){
- .hero h1{font-size:clamp(1.65rem,7.2vw,2rem);line-height:1.35}
- .hero h1 .accent{font-size:1.2em}
+ .hero h1{font-size:clamp(1.55rem,6.2vw,1.85rem);line-height:1.42;letter-spacing:-.02em;margin-bottom:14px}
+ .hero h1 .accent{font-size:1.08em}
  .hero-line-one{white-space:normal}
- .hero .lead{font-size:clamp(1rem,4vw,1.125rem);line-height:1.6}
+ .hero .lead{font-size:clamp(.96rem,3.8vw,1.06rem);line-height:1.65;margin-bottom:18px}
  .sec-title{font-size:2.15rem}
  .svc-no{font-size:.82rem}
  .svc-badge{font-size:.76rem}
