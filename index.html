@@ -566,23 +566,49 @@ body::before{display:none!important}
 
 /* ===== 信頼 ===== */
 .trust>.wrap{padding-bottom:clamp(48px,7vw,90px)}
-.cert{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:clamp(48px,7vw,80px)}
-.cert h3{font-family:var(--jp);font-weight:700;font-size:clamp(1.2rem,2.6vw,1.6rem);margin-bottom:8px;color:#fff}
-.cert p{color:var(--muted);font-size:.92rem;margin-bottom:30px}
-.cert-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}
-/* モバイルは認定代理店を縦1列に */
-@media(max-width:560px){.cert-logos{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto;gap:16px}}
+.reason-tag{position:absolute;top:0;left:clamp(20px,3vw,40px);z-index:2;display:inline-flex;align-items:baseline;gap:6px;padding:7px 14px 8px;border-radius:0 0 12px 12px;background:#FF6B00;color:#fff;font-family:var(--en);font-weight:800;font-size:1.05rem;letter-spacing:.04em;box-shadow:0 6px 18px rgba(255,107,0,.35)}
+.reason-tag b{font-size:.62rem;letter-spacing:.2em;font-weight:700;opacity:.9}
+.cert{position:relative;overflow:hidden;border-radius:24px;padding:clamp(48px,5vw,64px) clamp(22px,4vw,56px) clamp(28px,4vw,48px);margin-bottom:clamp(48px,7vw,80px);
+  background:var(--glass);border:1px solid var(--glass-bd);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 12px 30px rgba(0,0,0,.26)}
+.cert::before{content:"";position:absolute;bottom:-30%;right:-10%;width:340px;height:340px;background:radial-gradient(circle,var(--glow-sora),transparent 65%);pointer-events:none}
+.cert-head{position:relative;display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px);align-items:center}
+.cert-emblem{width:clamp(130px,14vw,150px);aspect-ratio:1;border-radius:50%;border:3px solid var(--sora);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(245,138,75,.22),inset 0 0 0 8px rgba(255,255,255,.04)}
+.cert-emblem svg{width:44px;height:44px;color:var(--sora);filter:drop-shadow(0 0 8px rgba(245,138,75,.5))}
+.cert-emblem .ce-t{font-family:var(--jp);font-weight:700;font-size:1.05rem;color:#fff;margin-top:4px}
+.cert-emblem .ce-en{font-family:var(--en);font-size:.58rem;letter-spacing:.3em;color:rgba(255,255,255,.55);font-weight:600;margin-top:2px}
+.cert h3{font-family:var(--jp);font-weight:700;font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.5;margin-bottom:12px;color:#fff}
+.cert .cert-note{color:rgba(255,255,255,.85);font-size:.98rem;line-height:1.9;margin:0}
+.cert .cert-note strong{color:var(--sora);font-weight:700}
+.cert-route{position:relative;display:flex;align-items:center;margin:clamp(26px,4vw,40px) 0 clamp(22px,3vw,32px)}
+.cr-node{flex-shrink:0;padding:10px 18px;border-radius:30px;background:rgba(255,255,255,.08);border:1px solid var(--glass-bd);font-family:var(--jp);font-weight:700;font-size:.9rem;color:#fff;white-space:nowrap}
+.cr-node.cr-us{background:#FF6B00;border-color:#FF6B00;box-shadow:0 0 22px rgba(255,107,0,.4)}
+.cr-line{position:relative;flex:1;min-width:24px;height:2px;margin:0 8px;background:linear-gradient(90deg,rgba(255,255,255,.25),var(--sora))}
+.cr-line::after{content:"";position:absolute;right:-1px;top:50%;width:7px;height:7px;border-top:2px solid var(--sora);border-right:2px solid var(--sora);transform:translateY(-50%) rotate(45deg)}
+.cr-skip{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);font-size:.72rem;font-weight:700;color:var(--sora);white-space:nowrap}
+.cert-logos{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%}
+@media(max-width:700px){
+  .cert-head{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .cr-node{padding:8px 11px;font-size:.78rem}
+  .cr-skip{font-size:.62rem}
+}
 .cert-logo{border-radius:14px;padding:22px 20px;min-width:0;text-align:center;
   background:var(--glass-light);border:1px solid var(--glass-bd);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
 .cert-logo .cert-img{display:block;width:100%;max-width:220px;height:60px;object-fit:contain;background:#fff;border-radius:10px;padding:15px 30px;margin:0 auto 14px;box-sizing:border-box}
 .cert-logo .nm{font-family:var(--jp);font-weight:700;font-size:1.05rem;color:#fff}
 .cert-logo .ty{font-size:.7rem;color:var(--sora);font-weight:600;letter-spacing:.1em;margin-top:4px}
-.cert .cert-note{margin:26px auto 0;max-width:640px;padding:16px 22px;border-radius:14px;background:rgba(14,17,24,.62);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#fff;font-size:.98rem;line-height:1.9;text-shadow:0 1px 3px rgba(0,0,0,.5)}
-.cert .cert-note strong{color:var(--sora);font-weight:700}
+@media(max-width:560px){
+  .cert-logos{grid-template-columns:1fr;gap:10px}
+  .cert-logo{display:grid;grid-template-columns:120px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;text-align:left;padding:12px 14px}
+  .cert-logo .cert-img{grid-row:1/3;height:48px;max-width:120px;padding:10px 14px;margin:0}
+  .cert-logo .nm{font-size:.98rem;align-self:end}
+  .cert-logo .ty{margin-top:2px;align-self:start}
+}
 .guarantee{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(20px,3vw,40px);align-items:center;border-radius:24px;padding:clamp(30px,4vw,56px);margin-bottom:clamp(48px,7vw,80px);
   background:var(--glass);border:1px solid var(--glass-bd);position:relative;overflow:hidden;
   -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);box-shadow:0 12px 30px rgba(0,0,0,.26)}
+.guarantee{padding-top:clamp(56px,6vw,68px);margin-bottom:clamp(20px,3vw,32px)}
+.trust > .wrap + .wrap{margin-top:0}
 .guarantee::before{content:"";position:absolute;top:-30%;left:-10%;width:340px;height:340px;background:radial-gradient(circle,var(--glow-sora),transparent 65%);pointer-events:none}
 .guarantee .seal{display:flex;align-items:center;justify-content:center;position:relative}
 .seal-circle{width:clamp(195px,22vw,215px);height:clamp(195px,22vw,215px);border-radius:50%;border:3px solid var(--sora);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;
@@ -1562,6 +1588,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     </div>
 
     <div class="guarantee reveal">
+      <span class="reason-tag"><b>REASON</b>01</span>
       <div class="seal">
         <div class="seal-circle"><svg class="seal-shield" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg><span class="y en">10</span><span class="t" data-en="Year Warranty">年保証</span><span class="sub-en en">WARRANTY</span><span class="seal-shine" aria-hidden="true"></span></div>
       </div>
@@ -1614,15 +1641,30 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   </div>
 
   <div class="wrap">
-    <div class="cert reveal" id="makers" style="margin-top:80px">
-      <h3 data-en="Authorized Manufacturer Dealer">メーカー認定代理店</h3>
-      <p data-en="Proof of solid quality — we hold official certification from top manufacturers.">確かな品質の証。一流メーカーの正規認定を受けています。</p>
+    <div class="cert reveal" id="makers">
+      <span class="reason-tag"><b>REASON</b>02</span>
+      <div class="cert-head">
+        <div class="cert-emblem" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m9.5 9 1.8 1.8L14.8 7.3"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg>
+          <span class="ce-t" data-en="Certified">認定</span><span class="ce-en en">DEALER</span>
+        </div>
+        <div>
+          <h3 data-en="An authorized manufacturer dealer —<br>quality materials at fair prices">メーカー認定代理店だから、<br>良い材料を<span class="sora">適正価格</span>で。</h3>
+          <p class="cert-note" data-en="We hold official certification from top manufacturers and buy <strong>directly from the makers</strong>. With no middleman margins, we deliver genuine materials at <strong>fair, reasonable prices</strong>.">一流メーカーの正規認定を受け、<strong>メーカーから直接仕入れ</strong>ています。中間マージンがかからない分、確かな品質の材料を<strong>適正価格</strong>でご提供できます。</p>
+        </div>
+      </div>
+      <div class="cert-route" aria-hidden="true">
+        <div class="cr-node" data-en="Manufacturer">メーカー</div>
+        <div class="cr-line"><span class="cr-skip" data-en="No middleman">中間業者なし</span></div>
+        <div class="cr-node cr-us" data-en="Hatano">秦野瓦店</div>
+        <div class="cr-line"></div>
+        <div class="cr-node" data-en="You">お客様</div>
+      </div>
       <div class="cert-logos">
         <div class="cert-logo"><img class="cert-img" src="assets/images/maker-kmew.png" alt="KMEW（ケイミュー）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm">KMEW</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
         <div class="cert-logo"><img class="cert-img" src="assets/images/maker-sanshu.png" alt="鶴弥（三州瓦）認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Tsuruya (Sanshu Tile)">鶴弥（三州瓦）</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
         <div class="cert-logo"><img class="cert-img" src="assets/images/maker-awaji.png" alt="淡路瓦 認定代理店ロゴ" loading="lazy" onerror="this.style.display='none'"><div class="nm" data-en="Awaji Tile">淡路瓦</div><div class="ty" data-en="Authorized Dealer">認定代理店</div></div>
       </div>
-      <p class="cert-note" data-en="<strong>Direct from the manufacturers</strong> — as an authorized dealer we buy materials straight from the makers, keeping out middleman margins so we can offer <strong>fair, reasonable prices</strong>.">認定代理店として<strong>メーカーから直接仕入れ</strong>ているため、中間マージンを抑え、<strong>良い材料を適正価格</strong>でご提供できます。</p>
     </div>
   </div>
 </section>
