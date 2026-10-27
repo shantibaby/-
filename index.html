@@ -744,16 +744,16 @@ section.trust > .wrap + .wrap{margin-top:0;padding-top:0}
 .cp-panel{position:relative;isolation:isolate;overflow:hidden;padding:clamp(28px,5vw,60px);display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:790px;
   border:1px solid rgba(207,224,239,.42);border-radius:18px;background:#17293d;box-shadow:0 25px 70px rgba(0,0,0,.22)}
 .cp-visual{position:absolute;inset:0;z-index:-2;margin:0;overflow:hidden;background:#17293d}
-.cp-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:right center}
+.cp-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:left center}
 .cp-visual::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(10,25,43,.95) 0%,rgba(10,25,43,.85) 30%,rgba(10,25,43,.32) 49%,rgba(10,25,43,.04) 72%),linear-gradient(0deg,rgba(10,25,43,.96) 0%,rgba(10,25,43,.76) 16%,rgba(10,25,43,0) 39%)}
 .cp-panel::after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,225,201,.16);border-radius:10px;pointer-events:none}
 .cp-main,.cp-actions{position:relative}
-.cp-main{width:43%;max-width:430px}
+.cp-main{width:38%;max-width:400px}
 .cp-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:30px;margin-bottom:20px;
   background:rgba(255,107,0,.16);border:1px solid rgba(255,107,0,.6);color:#fff;font-size:.82rem;font-weight:800;letter-spacing:.08em}
 .cp-badge i{width:9px;height:9px;border-radius:50%;background:#FF6B00;flex-shrink:0;animation:cpPulse 1.8s infinite}
 @keyframes cpPulse{0%{box-shadow:0 0 0 0 rgba(255,107,0,.6)}70%{box-shadow:0 0 0 10px rgba(255,107,0,0)}100%{box-shadow:0 0 0 0 rgba(255,107,0,0)}}
-.cp-panel h2{font-family:var(--jp);font-weight:800;color:#fff;font-size:clamp(2rem,3.7vw,3.1rem);line-height:1.35;letter-spacing:.03em;text-shadow:0 2px 15px rgba(0,0,0,.38);word-break:auto-phrase;line-break:strict}
+.cp-panel h2{font-family:var(--jp);font-weight:800;color:#fff;font-size:clamp(2rem,3.2vw,2.7rem);line-height:1.35;letter-spacing:.03em;text-shadow:0 2px 15px rgba(0,0,0,.38);word-break:auto-phrase;line-break:strict}
 .cp-panel h2 em{font-style:normal;color:#FF6B00}
 .cp-panel .lead{max-width:600px;margin-top:18px;color:rgba(255,255,255,.9);font-size:clamp(.98rem,1.5vw,1.1rem);line-height:1.8}
 .cp-offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:26px;max-width:560px}
@@ -1499,7 +1499,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 <section class="campaign" id="campaign" aria-labelledby="campaign-title">
   <div class="wrap">
     <div class="cp-panel reveal">
-      <figure class="cp-visual" aria-hidden="true"><img src="assets/images/roof-inspection-family.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async"></figure>
+      <figure class="cp-visual" aria-hidden="true"><img src="assets/images/roof-inspection-family.jpg" alt="" width="1536" height="1024" loading="eager" decoding="async"></figure>
       <div class="cp-main">
         <span class="cp-badge"><i aria-hidden="true"></i><span data-en="Free roof inspection &mdash; available now">無料屋根診断 実施中</span></span>
         <h2 id="campaign-title" data-en="Free roof inspections,<br><em>available now.</em>">屋根の無料診断、<br><em>実施中です。</em></h2>
