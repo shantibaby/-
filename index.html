@@ -54,11 +54,11 @@
   --muted:rgba(255,255,255,.82);
   --muted-2:rgba(255,255,255,.64);
   /* 白い半透明カードと、暗くした動画背景の組み合わせ */
-  --glass:rgba(255,255,255,.12);
-  --glass-2:rgba(255,255,255,.16);
-  --glass-light:rgba(255,255,255,.12);
-  --glass-bd:rgba(255,255,255,.28);
-  --glass-bd-2:rgba(255,255,255,.36);
+  --glass:rgba(255,255,255,.055);
+  --glass-2:rgba(255,255,255,.085);
+  --glass-light:rgba(255,255,255,.055);
+  --glass-bd:rgba(255,255,255,.13);
+  --glass-bd-2:rgba(255,255,255,.2);
   --glow-sora:rgba(245,138,75,.30);
   --glow-gold:rgba(199,154,58,.22);
   --maxw:1200px;
@@ -649,7 +649,7 @@ section.trust > .wrap + .wrap{margin-top:0;padding-top:0}
 .voices-block[data-show="false"]{display:none!important}
 .voices{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,26px)}
 .voice{border-radius:26px;padding:30px clamp(22px,2.5vw,34px);position:relative;display:flex;flex-direction:column;overflow:hidden;
-  background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.10));border:1px solid var(--glass-bd);
+  background:var(--glass);border:1px solid var(--glass-bd);
   -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 18px 48px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.2)}
 .voice::before{content:"\201C";position:absolute;top:16px;right:24px;font-family:Georgia,serif;font-size:5rem;color:rgba(255,255,255,.12);line-height:1}
 .voice .stars{order:1;color:#dbb980;letter-spacing:4px;margin-bottom:16px;font-size:.8rem}
