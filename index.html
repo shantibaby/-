@@ -53,13 +53,12 @@
   --txt:#f4f4f6;
   --muted:rgba(255,255,255,.82);
   --muted-2:rgba(255,255,255,.64);
-  /* すりガラス：白だと明るい背景で白文字が読みにくいので、暗い紺の半透明にする */
-  --glass:rgba(16,22,32,.42);
-  --glass-2:rgba(16,22,32,.5);
-  /* 白いすりガラス（実績の数字・メーカーのカード用） */
-  --glass-light:rgba(255,255,255,.055);
-  --glass-bd:rgba(255,255,255,.13);
-  --glass-bd-2:rgba(255,255,255,.2);
+  /* 白い半透明カードと、暗くした動画背景の組み合わせ */
+  --glass:rgba(255,255,255,.12);
+  --glass-2:rgba(255,255,255,.16);
+  --glass-light:rgba(255,255,255,.12);
+  --glass-bd:rgba(255,255,255,.28);
+  --glass-bd-2:rgba(255,255,255,.36);
   --glow-sora:rgba(245,138,75,.30);
   --glow-gold:rgba(199,154,58,.22);
   --maxw:1200px;
@@ -356,7 +355,7 @@ html[lang="en"] .hero h1 .accent{white-space:normal}
 .whiteout{position:fixed;inset:0;z-index:10000;background:#fff;opacity:0;pointer-events:none}
 .hero-bg{transition:opacity .45s ease}
 .bgvideo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.bgvideo::after{content:"";position:absolute;inset:0;background:rgba(12,13,18,.15)} /* 暗幕：さらに薄め(15%) */
+.bgvideo::after{content:"";position:absolute;inset:0;background:rgba(7,9,14,var(--video-shade,.34))}
 /* 背景動画を見せるため、元のダークグラデーション層を無効化 */
 body::before{display:none!important}
 /* スペース：フッター手前で背景動画をクリーンに全表示するための空セクション（高さ半分） */
@@ -519,7 +518,7 @@ body::before{display:none!important}
 .deck-card{
   flex:0 0 clamp(256px,72vw,356px);scroll-snap-align:center;
   /* backdrop-filterが3Dカードで効かないため、ぼかし無しの半透明パネルで統一 */
-  background:rgba(15,17,23,.5);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;
+  background:var(--glass);border:1px solid var(--glass-bd);border-radius:16px;overflow:hidden;
   box-shadow:none;
   transform:scale(1); /* 3D回転をやめ2Dに（backdrop-filterを有効化） */
   will-change:transform,opacity;
@@ -529,7 +528,7 @@ body::before{display:none!important}
   position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
   display:none;align-items:center;gap:8px;
   padding:7px 16px 7px 14px;border-radius:30px;
-  background:rgba(10,12,18,.45);border:1px solid var(--glass-bd);
+  background:var(--glass);border:1px solid var(--glass-bd);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
   color:rgba(255,255,255,.9);font-size:.78rem;letter-spacing:.12em;font-family:var(--jp-sans);
   pointer-events:none;z-index:7;box-shadow:0 8px 22px rgba(0,0,0,.3);
@@ -650,7 +649,7 @@ section.trust > .wrap + .wrap{margin-top:0;padding-top:0}
 .voices-block[data-show="false"]{display:none!important}
 .voices{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,26px)}
 .voice{border-radius:26px;padding:30px clamp(22px,2.5vw,34px);position:relative;display:flex;flex-direction:column;overflow:hidden;
-  background:linear-gradient(145deg,rgba(235,244,244,.14),rgba(21,35,40,.33));border:1px solid rgba(255,255,255,.22);
+  background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.10));border:1px solid var(--glass-bd);
   -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);box-shadow:0 18px 48px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.2)}
 .voice::before{content:"\201C";position:absolute;top:16px;right:24px;font-family:Georgia,serif;font-size:5rem;color:rgba(255,255,255,.12);line-height:1}
 .voice .stars{order:1;color:#dbb980;letter-spacing:4px;margin-bottom:16px;font-size:.8rem}
@@ -1160,11 +1159,11 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   user-select:none;-webkit-user-select:none;
   list-style:none;
   /* 質問ヘッダーは暗めフロスト（背景動画の色に左右されず読みやすく） */
-  background:rgba(18,20,26,.42);
+  background:var(--glass);
   -webkit-backdrop-filter:blur(20px) saturate(1.2);backdrop-filter:blur(20px) saturate(1.2);
   transition:background .25s;
 }
-.faq-q:hover{background:rgba(28,31,40,.5)}
+.faq-q:hover{background:rgba(255,255,255,.2)}
 .faq-item.open{border-color:rgba(255,107,0,.5);box-shadow:0 8px 30px rgba(0,0,0,.25),0 0 26px rgba(255,107,0,.1),inset 0 1px 1px rgba(255,255,255,.08)}
 .faq-q::-webkit-details-marker{display:none}
 .faq-q-text{flex:1;line-height:1.6}
@@ -1182,7 +1181,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
   padding:0 28px;
   color:var(--muted);font-size:.95rem;line-height:1.55;
   /* 回答は黒の半透明パネル（ブラーなし） */
-  background:rgba(15,17,23,.5);
+  background:var(--glass-light);
 }
 .faq-a-inner{padding-bottom:24px;border-top:1px solid rgba(255,255,255,.07);padding-top:16px}
 
@@ -2084,6 +2083,45 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
 <script>
 (function(){
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 背景動画は前半を暗めに、後半でさらに暗くし、終盤で明るさを戻す。 */
+  var shadeLayer=document.querySelector('.bgvideo');
+  var shadeStops=[
+    ['hero',.32],['stats',.36],['services',.40],['campaign',.44],
+    ['gallery',.48],['trust',.54],['promise',.62],['flow',.66],
+    ['faq',.57],['company',.44],['contact',.30],['finale',.17]
+  ];
+  var shadePending=false;
+  function updateVideoShade(){
+    shadePending=false;
+    if(!shadeLayer)return;
+    var pos=window.scrollY+window.innerHeight*.5;
+    var stops=shadeStops.map(function(stop){
+      var el=document.getElementById(stop[0]);
+      return el?{y:el.getBoundingClientRect().top+window.scrollY,v:stop[1]}:null;
+    }).filter(Boolean);
+    if(!stops.length)return;
+    var value=stops[0].v;
+    for(var i=1;i<stops.length;i++){
+      if(pos<stops[i].y){
+        var span=Math.max(1,stops[i].y-stops[i-1].y);
+        var t=Math.max(0,Math.min(1,(pos-stops[i-1].y)/span));
+        value=stops[i-1].v+(stops[i].v-stops[i-1].v)*t;
+        break;
+      }
+      value=stops[i].v;
+    }
+    shadeLayer.style.setProperty('--video-shade',value.toFixed(3));
+  }
+  function scheduleVideoShade(){
+    if(shadePending)return;
+    shadePending=true;
+    requestAnimationFrame(updateVideoShade);
+  }
+  window.addEventListener('scroll',scheduleVideoShade,{passive:true});
+  window.addEventListener('resize',scheduleVideoShade,{passive:true});
+  window.addEventListener('load',scheduleVideoShade);
+  scheduleVideoShade();
 
   /* ---- Lenis スムーススクロール ---- */
   var lenis=null;
