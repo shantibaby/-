@@ -274,7 +274,7 @@ h1 .accent,h2 .sora{font-weight:800}
 html[lang="en"] .hero h1 .accent{white-space:normal}
 @keyframes accentBeat{0%,10%,100%{transform:scale(1)}4%{transform:scale(1.3)}}
 @media(prefers-reduced-motion:no-preference){
- .hero-text-beat h1 .accent-letter,h2.accent-beat .accent-letter{animation:accentBeat 2.8s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--letter-index) * .105s)}
+ h2.accent-beat .accent-letter{animation:accentBeat 2.8s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--letter-index) * .105s)}
 }
 .hero .lead{font-size:clamp(.95rem,1.7vw,1.12rem);line-height:1.72;color:rgba(255,255,255,.9);margin-bottom:28px;font-weight:500}
 .hero-ctas{display:flex;flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap}
@@ -2168,7 +2168,7 @@ footer{padding:0 clamp(16px,4vw,46px) 0;margin-top:12vh}
     });
   },{threshold:.55}):null;
   var decorateAccentText=function(){
-    document.querySelectorAll('.hero h1 .accent,h2 .sora').forEach(function(el){
+    document.querySelectorAll('h2 .sora').forEach(function(el){
       if(el.querySelector('.accent-letter'))return;
       var value=el.textContent;
       el.textContent='';
